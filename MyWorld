@@ -1,0 +1,25 @@
+import mayflower.*;
+
+
+public class MyWorld extends World {
+
+    private String[][] tiles;
+    public MyWorld() 
+    {
+        setBackground("img/BG/BG.png");
+        tiles = new String[6][24];
+        buildWorld();
+    }
+
+    public void act()
+    {
+    }
+    public void buildWorld() {
+        for(int r = 0; r < tiles.length; r++) {
+            for(int c = 0; c < tiles[0].length; c++) {
+                tiles [r][c] = "";
+            }
+        }
+
+    }
+}
