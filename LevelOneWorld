@@ -1,10 +1,10 @@
 import mayflower.*;
 
 
-public class MyWorld extends World {
+public class LevelOneWorld extends World {
 
     private String[][] tiles;
-    public MyWorld() 
+    public LevelOneWorld() 
     {
         setBackground("img/BG/BG.png");
         tiles = new String[6][24];
