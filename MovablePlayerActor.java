@@ -37,38 +37,38 @@ public class MovablePlayerActor extends GravityActor
         int dist;
         if (Mayflower.isKeyDown(Keyboard.KEY_RIGHT) &&
             !(w + getX() > 800)) {
-            setLocation(getX() + 4, getY());
+            //setLocation(getX() + 4, getY());
             newAction = "walkRight";
             direction = "right";
             
-            if (isBlocked()) 
-            {
-                dist = 4;
-                while (isBlocked()) 
-                {
-                    dist -= 1;
-                    setLocation(getX() - (dist + 1), getY());
-                    setLocation(getX() + dist, getY());
-                }
-            }
+            //if (isBlocked()) 
+            //{
+            //    dist = 4;
+            //    while (isBlocked()) 
+            //    {
+            //        dist -= 1;
+            //        setLocation(getX() - (dist + 1), getY());
+            //        setLocation(getX() + dist, getY());
+            //    }
+            //}
         }
             
         else if (Mayflower.isKeyDown(Keyboard.KEY_LEFT) &&
             !(getX() < 0)) {
-            setLocation(getX() - 4, getY());
+            //setLocation(getX() - 4, getY());
             newAction = "walkLeft";
             direction = "left";
             
-            if (isBlocked()) 
-            {
-                dist = 4;
-                while (isBlocked()) 
-                {
-                    dist -= 1;
-                    setLocation(getX() + (dist + 1), getY());
-                    setLocation(getX() - dist, getY());
-                }
-            }
+            //if (isBlocked()) 
+            //{
+            //    dist = 4;
+            //    while (isBlocked()) 
+            //    {
+            //        dist -= 1;
+            //        setLocation(getX() + (dist + 1), getY());
+            //        setLocation(getX() - dist, getY());
+            //    }
+            //}
         }
         
         //else if (Mayflower.isKeyDown(Keyboard.KEY_UP) &&

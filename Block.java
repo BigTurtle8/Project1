@@ -1,33 +1,50 @@
+import mayflower.*;
 
-/**
- * Write a description of class Block here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Block
+public class Block extends MovableSettingActor
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Block
-     */
+    // needs to block player
     public Block()
     {
-        // initialise instance variables
-        x = 0;
+        MayflowerImage img = new MayflowerImage("img/Tiles/2.png");
+        img.scale(100, 100);
+        setImage("img/Tiles/2.png");
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public void act() 
     {
-        // put your code here
-        return x + y;
+        if (Mayflower.isKeyDown(Keyboard.KEY_LEFT)) 
+        {
+            setLocation(getX() + 4, getY());
+            if (isBlocked()) 
+            {
+               int dist = 4;
+               while (isBlocked()) 
+               {
+                    dist -= 1;
+                    setLocation(getX() + (dist + 1), getY());
+                    setLocation(getX() - dist, getY());
+               }
+            }
+        }
+        else if (Mayflower.isKeyDown(Keyboard.KEY_RIGHT))
+        {
+            setLocation(getX() - 4, getY());
+            if (isBlocked()) 
+            {
+               int dist = 4;
+               while (isBlocked()) 
+               {
+                    dist -= 1;
+                    setLocation(getX() - (dist + 1), getY());
+                    setLocation(getX() + dist, getY());
+               }
+            }
+        }
+        
+    }
+    
+    public boolean isBlocked()
+    {
+        return isTouching(Player.class);
     }
 }

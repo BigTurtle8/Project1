@@ -40,8 +40,7 @@ public class GravityActor extends AnimatedActor
     
     public boolean isBlocked()
     {
-        //return isTouching(Block.class);
-        return false;
+        return isTouching(Block.class);
     }
     
     public int getVelocity()
