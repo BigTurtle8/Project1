@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MovableSetting
+comment1.params=
+comment1.target=MovableSetting()
+comment2.params=actor
+comment2.target=void\ add(MovableSettingActor)
+comment3.params=
+comment3.target=void\ act()
+numComments=4
