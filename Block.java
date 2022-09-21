@@ -10,40 +10,7 @@ public class Block extends MovableSettingActor
         setImage("img/Tiles/2.png");
     }
     
-    public void act() 
-    {
-        if (Mayflower.isKeyDown(Keyboard.KEY_LEFT)) 
-        {
-            setLocation(getX() + 4, getY());
-            if (isBlocked()) 
-            {
-               int dist = 4;
-               while (isBlocked()) 
-               {
-                    dist -= 1;
-                    setLocation(getX() + (dist + 1), getY());
-                    setLocation(getX() - dist, getY());
-               }
-            }
-        }
-        else if (Mayflower.isKeyDown(Keyboard.KEY_RIGHT))
-        {
-            setLocation(getX() - 4, getY());
-            if (isBlocked()) 
-            {
-               int dist = 4;
-               while (isBlocked()) 
-               {
-                    dist -= 1;
-                    setLocation(getX() - (dist + 1), getY());
-                    setLocation(getX() + dist, getY());
-               }
-            }
-        }
-        
-    }
-    
-    public boolean isBlocked()
+    public boolean isBlocking()
     {
         return isTouching(Player.class);
     }
