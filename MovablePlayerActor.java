@@ -2,12 +2,14 @@ import mayflower.*;
 
 public class MovablePlayerActor extends GravityActor
 {
-    private Animation walkRight;
-    private Animation walkLeft;
-    private Animation idle;
-    private Animation idleLeft;
-    private Animation fallRight;
-    private Animation fallLeft;
+    private Animation idle, idleLeft;
+    private Animation walkRight, walkLeft;
+    private Animation fallRight, fallLeft;
+    private Animation jumpRight, jumpLeft;
+    private Animation hurtRight, hurtLeft;
+    private Animation deadRight, deadLeft;
+    private Animation slideRight, slideLeft;
+    
     private String currentAction;
     private String direction;
     
@@ -26,8 +28,9 @@ public class MovablePlayerActor extends GravityActor
         super.act();
         
         String newAction = null;
-        if (currentAction == null)
+        if (currentAction == null) {
             newAction = "idle";
+        }
         
         //int x = getX();
         //int y = getY();
@@ -95,8 +98,7 @@ public class MovablePlayerActor extends GravityActor
             
         }
         
-        if (Mayflower.isKeyDown(Keyboard.KEY_UP) &&
-            !isFalling()) {
+        if (Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) {
             setVelocity(-18);
         }
         
@@ -137,33 +139,45 @@ public class MovablePlayerActor extends GravityActor
         super.setAnimation(a);
     }
     
-    public void setWalkRightAnimation(Animation ani)
+    public void setWalkAnimations(Animation right, Animation left)
     {
-        walkRight = ani;
+        walkRight = right;
+        walkLeft = left;
     }
     
-    public void setWalkLeftAnimation(Animation ani)
+    public void setIdleAnimations(Animation right, Animation left) 
     {
-        walkLeft = ani;
+        idle = right;
+        idleLeft = left;
     }
     
-    public void setIdleAnimation(Animation ani)
+    public void setFallAnimations(Animation right, Animation left)
     {
-        idle = ani;
+        fallRight = right;
+        fallLeft = left;
     }
     
-    public void setIdleLeftAnimation(Animation ani)
-    {
-        idleLeft = ani;
+    public void setJumpAnimations(Animation right, Animation left) 
+    {    
+        jumpRight = right;
+        jumpLeft = left;
     }
     
-    public void setFallRightAnimation(Animation ani)
-    {
-        fallRight = ani;
+    public void setHurtAnimations(Animation right, Animation left) 
+    {    
+        hurtRight = right;
+        hurtLeft = left;
     }
     
-    public void setFallLeftAnimation(Animation ani)
-    {
-        fallLeft = ani;
+    public void setDeadAnimations(Animation right, Animation left) 
+    {    
+        deadRight = right;
+        deadLeft = left;
+    }
+    
+    public void setSlideAnimations(Animation right, Animation left) 
+    {    
+        slideRight = right;
+        slideLeft = left;
     }
 }
