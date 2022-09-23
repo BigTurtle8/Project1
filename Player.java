@@ -132,8 +132,8 @@ public class Player extends MovablePlayerActor
         String[] dRFilenames = new String[10];
         String[] dLFilenames = new String[10];
         for (int i = 0; i < dRFilenames.length; i++) {
-            hRFilenames[i] = "img/cat/Dead (" + (i + 1) + ").png";
-            hLFilenames[i] = "img/cat/Dead (" + (i + 1) + ").png";
+            dRFilenames[i] = "img/cat/Dead (" + (i + 1) + ").png";
+            dLFilenames[i] = "img/cat/Dead (" + (i + 1) + ").png";
         }
         Animation deadRight = new Animation(50, dRFilenames);
         Animation deadLeft = new Animation(50, dLFilenames);
@@ -153,8 +153,8 @@ public class Player extends MovablePlayerActor
         String[] sRFilenames = new String[10];
         String[] sLFilenames = new String[10];
         for (int i = 0; i < sRFilenames.length; i++) {
-            hRFilenames[i] = "img/cat/Slide (" + (i + 1) + ").png";
-            hLFilenames[i] = "img/cat/Slide (" + (i + 1) + ").png";
+            sRFilenames[i] = "img/cat/Slide (" + (i + 1) + ").png";
+            sLFilenames[i] = "img/cat/Slide (" + (i + 1) + ").png";
         }
         Animation slideRight = new Animation(50, sRFilenames);
         Animation slideLeft = new Animation(50, sLFilenames);
