@@ -37,7 +37,7 @@ public abstract class MovableSettingActor extends Actor
     // move that much
     public void correctMove(int dist)
     {
-        setLocation(dist, getY());
+        setLocation(getX() + dist, getY());
     }
     
     // if isBlocking(), then correct to closest legal position
