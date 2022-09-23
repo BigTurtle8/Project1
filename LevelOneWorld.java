@@ -5,8 +5,9 @@ public class LevelOneWorld extends GameWorld
     private String[][] tiles;
     private MovableSetting setting;
     
-    public LevelOneWorld()
+    public LevelOneWorld(int s, int l)
     {
+        super(s,l);
         setBackground("img/cat/Dead (1).png");
         tiles = new String[6][24];
         
@@ -14,6 +15,7 @@ public class LevelOneWorld extends GameWorld
         
         this.setting = new MovableSetting();
         buildWorld();
+        
     }
     
     public void act()

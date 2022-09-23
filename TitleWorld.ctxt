@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=TitleWorld
-comment1.params=
-comment1.target=TitleWorld()
+comment1.params=s\ l
+comment1.target=TitleWorld(int,\ int)
 numComments=2

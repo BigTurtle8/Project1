@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=LevelOneWorld
-comment1.params=
-comment1.target=LevelOneWorld()
+comment1.params=s\ l
+comment1.target=LevelOneWorld(int,\ int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
