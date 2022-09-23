@@ -10,6 +10,9 @@ public class MovablePlayerActor extends GravityActor
     private Animation deadRight, deadLeft;
     private Animation slideRight, slideLeft;
     
+    private boolean doubleJumpAvail;
+    private boolean canJump;
+    
     private String currentAction;
     private String direction;
     
@@ -21,6 +24,7 @@ public class MovablePlayerActor extends GravityActor
         idleLeft = null;
         currentAction = null;
         direction = "right";
+        canJump = true;
     }
     
     public void act()
@@ -98,8 +102,18 @@ public class MovablePlayerActor extends GravityActor
             
         }
         
-        if (Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) {
+        if (isTouching(Ladder.class) && Mayflower.isKeyDown(Keyboard.KEY_UP)) 
+        {
+            setCanJump(false);
+            setVelocity(0);
+            setLocation(getX(), getY() - 4);
+        }
+        
+        if (canJump && Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) {
             setVelocity(-18);
+        } else if (canJump && Mayflower.isKeyPressed(Keyboard.KEY_UP) && doubleJumpAvail) {
+            setVelocity(-18);
+            doubleJumpAvail = false;
         }
         
         if (isFalling())
@@ -107,8 +121,11 @@ public class MovablePlayerActor extends GravityActor
             newAction = "fallRight";
             if (direction != null && direction.equals("left"))
                 newAction = "fallLeft";
+        } else {
+            doubleJumpAvail = true;
         }
             
+        
         
         if (newAction != null && !newAction.equals(currentAction))
         {
@@ -132,6 +149,9 @@ public class MovablePlayerActor extends GravityActor
                 
             currentAction = newAction;
         }
+        
+        
+        setCanJump(true);
     }
     
     public void setAnimation(Animation a)
@@ -179,5 +199,10 @@ public class MovablePlayerActor extends GravityActor
     {    
         slideRight = right;
         slideLeft = left;
+    }
+    
+    public void setCanJump(boolean bool) 
+    {
+        canJump = bool;
     }
 }

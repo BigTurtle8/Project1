@@ -31,10 +31,12 @@ public class Player extends MovablePlayerActor
         walkRight.scale(100, 87);
         walkLeft.scale(100, 87);
         
+        walkLeft.mirrorHorizontally();
+        
         walkRight.setBounds(18, 5, 54, 80);
         walkLeft.setBounds(28, 5, 54, 80);
 
-        walkLeft.mirrorHorizontally();
+        
         // WALK ANIMATIONS ******************************************
         
         
@@ -54,10 +56,12 @@ public class Player extends MovablePlayerActor
         idle.scale(100, 87);
         idleLeft.scale(100, 87);
         
+        idleLeft.mirrorHorizontally();
+        
         idle.setBounds(18, 5, 54, 80);
         idleLeft.setBounds(28, 5, 54, 80);
 
-        idleLeft.mirrorHorizontally();
+        
         // IDLE ANIMATIONS ******************************************
         
         
@@ -78,10 +82,12 @@ public class Player extends MovablePlayerActor
         fallRight.scale(100, 87);
         fallLeft.scale(100, 87);
         
+        fallLeft.mirrorHorizontally();
+        
         fallRight.setBounds(13, 5, 54, 80);
         fallLeft.setBounds(33, 5, 54, 80);
         
-        fallLeft.mirrorHorizontally();
+        
         // FALL ANIMATIONS ******************************************
         
         
@@ -99,10 +105,12 @@ public class Player extends MovablePlayerActor
         jumpRight.scale(100, 87);
         jumpLeft.scale(100, 87);
         
+        jumpLeft.mirrorHorizontally();
+        
         jumpRight.setBounds(13, 5, 54, 80);
         jumpLeft.setBounds(33, 5, 54, 80);
         
-        jumpLeft.mirrorHorizontally();
+        
         // JUMP ANIMATIONS ******************************************
         
         
@@ -120,10 +128,12 @@ public class Player extends MovablePlayerActor
         hurtRight.scale(100, 87);
         hurtLeft.scale(100, 87);
         
+        hurtLeft.mirrorHorizontally();
+        
         hurtRight.setBounds(13, 5, 54, 80);
         hurtLeft.setBounds(33, 5, 54, 80);
         
-        hurtLeft.mirrorHorizontally();
+        
         // HURT ANIMATIONS ******************************************
         
         
@@ -141,10 +151,12 @@ public class Player extends MovablePlayerActor
         deadRight.scale(100, 87);
         deadLeft.scale(100, 87);
         
+        deadLeft.mirrorHorizontally();
+        
         deadRight.setBounds(13, 5, 54, 80);
         deadLeft.setBounds(33, 5, 54, 80);
         
-        deadLeft.mirrorHorizontally();
+        
         // DEAD ANIMATIONS ******************************************
         
         
@@ -162,10 +174,11 @@ public class Player extends MovablePlayerActor
         slideRight.scale(100, 87);
         slideLeft.scale(100, 87);
         
+        slideLeft.mirrorHorizontally();
+        
         slideRight.setBounds(13, 5, 54, 80);
         slideLeft.setBounds(33, 5, 54, 80);
-        
-        slideLeft.mirrorHorizontally();
+
         // SLIDE ANIMATIONS ******************************************
         
         
