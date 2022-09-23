@@ -3,11 +3,11 @@ import mayflower.*;
 public class Block extends MovableSettingActor
 {
     // needs to block player
-    public Block()
+    public Block(String num)
     {
-        MayflowerImage img = new MayflowerImage("img/Tiles/2.png");
+        MayflowerImage img = new MayflowerImage("img/Tiles/" + num + ".png");
         img.scale(100, 100);
-        setImage("img/Tiles/2.png");
+        setImage(img);
     }
     
     public boolean isBlocking()
