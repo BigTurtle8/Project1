@@ -25,7 +25,7 @@ public class LevelOneWorld extends GameWorld
     }
     
     public void buildWorld() {
-        for(int r = tiles.length - 1; r >= 0; r--) 
+        for(int r = 0; r < tiles.length; r++) 
         {
             for(int c = 0; c < tiles[0].length; c++) 
             {
@@ -33,12 +33,7 @@ public class LevelOneWorld extends GameWorld
                 {
                     tiles[r][c] = "Block";
                 }
-                else if (r == 4 && Math.random() > .7)
-                {
-                    tiles[r][c] = "Block";
-                }
-                else if (r == 3 && tiles[r + 1][c].equals("Block") && 
-                    Math.random() > .7)
+                else if (r == 4 && Math.random() > .8)
                 {
                     tiles[r][c] = "Block";
                 }
@@ -57,13 +52,7 @@ public class LevelOneWorld extends GameWorld
             {
                 if (tiles[r][c].equals("Block"))
                 {
-                    Block b;
-                    if (r != 0 && tiles[r - 1][c].equals("Block"))
-                        b = new Block("5");
-                      
-                    else 
-                        b = new Block("2");
-                        
+                    Block b = new Block();
                     addObject(b, c * 100, r * 100);
                     setting.add(b);
                 }
