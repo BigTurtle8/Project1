@@ -1,33 +1,20 @@
+import mayflower.*;
 
 /**
- * Write a description of class GameOverWorld here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * @Andrew Wang
+ * 
+ * Creates the GameOver World
  */
-public class GameOverWorld
+
+public class GameOverWorld extends GameWorld
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class GameOverWorld
-     */
-    public GameOverWorld()
+    public GameOverWorld(int s, int l) 
     {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        super(s,l);
+        super.changeCurrentLevel("Game Over");
+        setBackground("img/BG/BG.png");
+        showText("Your Score: " + super.getScore() + " Your lives: " + super.getLives(),100, 250, Color.BLACK);
+        showText("You lost! Press enter to try again.",100, 300, Color.BLACK);
+        super.changeHasLost(true);
     }
 }
