@@ -1,5 +1,11 @@
 import mayflower.*;
 
+/**
+ * @Andrew Wang
+ * 
+ * Creates the Level One World 
+ */
+
 public class LevelOneWorld extends GameWorld
 {
     private String[][] tiles;
@@ -7,11 +13,15 @@ public class LevelOneWorld extends GameWorld
     
     public LevelOneWorld(int s, int l)
     {
+        /**
+         * Sets the screen with the number of lives, score, and level one background
+         */
+        
         super(s,l);
-        setBackground("img/cat/Dead (1).png");
+        setBackground("img/BG/BG.png");
         tiles = new String[6][24];
         
-        super.changeCurrentLevel("levelOne");
+        super.changeCurrentLevel("Level One");
         
         this.setting = new MovableSetting();
         buildWorld();
@@ -23,9 +33,11 @@ public class LevelOneWorld extends GameWorld
         super.act();
         setting.act();
     }
-    
+    /**
+     * Sets world with blocks and player
+     */
     public void buildWorld() {
-        for(int r = 0; r < tiles.length; r++) 
+        for(int r = tiles.length - 1; r >= 0; r--) 
         {
             for(int c = 0; c < tiles[0].length; c++) 
             {
@@ -33,7 +45,16 @@ public class LevelOneWorld extends GameWorld
                 {
                     tiles[r][c] = "Block";
                 }
-                else if (r == 4 && Math.random() > .8)
+                else if (r == 4 && Math.random() > .7)
+                {
+                    tiles[r][c] = "Block";
+                    if (Math.random() > 0.5) 
+                    {
+                        tiles[r][c] = "Ladder";
+                    }
+                }
+                else if (r == 3 && tiles[r + 1][c].equals("Block") && 
+                    Math.random() > .7)
                 {
                     tiles[r][c] = "Block";
                 }
@@ -52,9 +73,21 @@ public class LevelOneWorld extends GameWorld
             {
                 if (tiles[r][c].equals("Block"))
                 {
-                    Block b = new Block();
+                    Block b;
+                    if (r != 0 && tiles[r - 1][c].equals("Block"))
+                        b = new Block("5");
+                      
+                    else 
+                        b = new Block("2");
+                        
                     addObject(b, c * 100, r * 100);
                     setting.add(b);
+                }
+                if (tiles[r][c].equals("Ladder"))
+                {
+                    Ladder l = new Ladder();
+                    addObject(l, c * 100, r * 100);
+                    setting.add(l);
                 }
                 //else if (tiles[r][c].equals("Player"))
                 //{
@@ -62,6 +95,7 @@ public class LevelOneWorld extends GameWorld
                 //}
             }
         }
+        
         
         addObject(new Player(), 350, 0);
     }
