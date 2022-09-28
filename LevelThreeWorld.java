@@ -1,12 +1,20 @@
 import mayflower.*;
 
+/**
+ * @Andrew Wang
+ * 
+ * Creates the Level Three World
+ */
 public class LevelThreeWorld extends GameWorld
 {
     public LevelThreeWorld(int s, int l)
     {
+        /**
+         * Sets the screen with the number of lives, score, and level three background
+         */
         super(s,l);
-        setBackground("img/dog/Dead (1).png");
-        super.changeCurrentLevel("levelThree");
+        setBackground("img/BG/BG.png");
+        super.changeCurrentLevel("Level Three");
         addObject(new Player(), 100, 100);
     }
     
