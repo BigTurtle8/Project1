@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.target=LevelOneWorld
+comment0.text=\r\n\ @Andrew\ Wang\r\n\ \r\n\ Creates\ the\ Level\ One\ World\ \r\n
 comment1.params=s\ l
 comment1.target=LevelOneWorld(int,\ int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ buildWorld()
+comment3.text=\r\n\ Sets\ world\ with\ blocks\ and\ player\r\n
 numComments=4
