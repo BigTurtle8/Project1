@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=Player
+comment0.text=\r\n\ @Esteban\ M.\r\n\ \r\n\ \r\n\ Creates\ frame\ animations\ for\ each\ avaliable\ animation\ player\ can\ perform\r\n\ Sets\ animations\ in\ MoveablePlayerActor\r\n
 comment1.params=
 comment1.target=Player()
+comment1.text=\r\n\ Constructor\ for\ Player\r\n\ Creates\ and\ sets\ frames\ for\ each\ type\ of\ Player\ Animation\r\n\ ANIMATIONS\:\r\n\ Walk\ Animation\r\n\ Idle\ Animation\r\n\ Fall\ Animation\r\n\ Jump\ Animation\r\n\ Hurt\ Animation\r\n\ Dead\ Animation\r\n\ Slide\ Animation\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Repeats\ act\ method\ from\ superclass\r\n
 numComments=3

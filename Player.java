@@ -1,22 +1,42 @@
 import mayflower.*;
 
+/**
+ * @Esteban M.
+ * 
+ * 
+ * Creates frame animations for each avaliable animation player can perform
+ * Sets animations in MoveablePlayerActor
+ */
 public class Player extends MovablePlayerActor
 {
-    //private Animation walk;
-    //private Animation idle;
     
+    /**
+     * Constructor for Player
+     * Creates and sets frames for each type of Player Animation
+     * ANIMATIONS:
+          * Walk Animation
+          * Idle Animation
+          * Fall Animation
+          * Jump Animation
+          * Hurt Animation
+          * Dead Animation
+          * Slide Animation
+     */
     public Player() 
     {
-        /*
-           * Set Walk Animation
-           * Set Idle Animation
-           * Set Fall Animation
-           * Set Jump Animation
+        /**
+           * ANIMATION CONSTRUCTION:
+                * Create 2 string arrays for filenames of each frame in the animation
+                * For loop to input animation filenames in each list
+                * Create left and right animation with filename array
+                * Scale both left and right animations to appropriate size
+                * Mirror left animation horizontally to flace left
+                * Set appropriate bounds for animation
         */
         
+        
        
-       
-        // WALK ANIMATIONS ******************************************
+        /**  WALK ANIMATIONS  *******************************************/ 
         String[] wFilenames = new String[10];
         String[] wLFilenames = new String[10];
         
@@ -35,13 +55,10 @@ public class Player extends MovablePlayerActor
         
         walkRight.setBounds(18, 5, 54, 80);
         walkLeft.setBounds(28, 5, 54, 80);
-
-        
-        // WALK ANIMATIONS ******************************************
         
         
         
-        // IDLE ANIMATIONS ******************************************
+        /**  IDLE ANIMATIONS  *******************************************/
         String[] iFilenames = new String[10];
         String[] iLFilenames = new String[10];
         
@@ -60,14 +77,11 @@ public class Player extends MovablePlayerActor
         
         idle.setBounds(18, 5, 54, 80);
         idleLeft.setBounds(28, 5, 54, 80);
-
-        
-        // IDLE ANIMATIONS ******************************************
         
         
         
         
-        // FALL ANIMATIONS ******************************************
+        /**  FALL ANIMATIONS  *******************************************/
         String[] fRFilenames = new String[8];
         String[] fLFilenames = new String[8];
         
@@ -88,11 +102,8 @@ public class Player extends MovablePlayerActor
         fallLeft.setBounds(33, 5, 54, 80);
         
         
-        // FALL ANIMATIONS ******************************************
         
-        
-        
-        // JUMP ANIMATIONS ******************************************
+        /**  JUMP ANIMATIONS  *******************************************/
         String[] jRFilenames = new String[8];
         String[] jLFilenames = new String[8];
         for (int i = 0; i < jRFilenames.length; i++) {
@@ -111,11 +122,8 @@ public class Player extends MovablePlayerActor
         jumpLeft.setBounds(33, 5, 54, 80);
         
         
-        // JUMP ANIMATIONS ******************************************
         
-        
-        
-        // HURT ANIMATIONS ******************************************
+        /**  HURT ANIMATIONS  *******************************************/
         String[] hRFilenames = new String[10];
         String[] hLFilenames = new String[10];
         for (int i = 0; i < hRFilenames.length; i++) {
@@ -134,11 +142,8 @@ public class Player extends MovablePlayerActor
         hurtLeft.setBounds(33, 5, 54, 80);
         
         
-        // HURT ANIMATIONS ******************************************
         
-        
-        
-        // DEAD ANIMATIONS ******************************************
+        /**  DEAD ANIMATIONS  *******************************************/
         String[] dRFilenames = new String[10];
         String[] dLFilenames = new String[10];
         for (int i = 0; i < dRFilenames.length; i++) {
@@ -157,11 +162,8 @@ public class Player extends MovablePlayerActor
         deadLeft.setBounds(33, 5, 54, 80);
         
         
-        // DEAD ANIMATIONS ******************************************
         
-        
-        
-        // SLIDE ANIMATIONS ******************************************
+        /**  SLIDE ANIMATIONS  ******************************************/
         String[] sRFilenames = new String[10];
         String[] sLFilenames = new String[10];
         for (int i = 0; i < sRFilenames.length; i++) {
@@ -178,10 +180,10 @@ public class Player extends MovablePlayerActor
         
         slideRight.setBounds(13, 5, 54, 80);
         slideLeft.setBounds(33, 5, 54, 80);
-
-        // SLIDE ANIMATIONS ******************************************
         
         
+        
+        /**  Sets every animation in MoveablePlayerActor */
         setWalkAnimations(walkRight, walkLeft);
         setIdleAnimations(idle, idleLeft);
         setFallAnimations(fallRight, fallLeft);
@@ -191,6 +193,9 @@ public class Player extends MovablePlayerActor
         setSlideAnimations(slideRight, slideLeft);
     }
     
+    /**
+     * Repeats act method from superclass
+     */
     public void act()
     {
         super.act();
