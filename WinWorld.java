@@ -2,8 +2,9 @@ import mayflower.*;
 
 public class WinWorld extends GameWorld
 {
-    public WinWorld()
+    public WinWorld(int s, int l)
     {
+        super(s, l);
         setBackground("img/Object/Bush (4).png");
         super.changeCurrentLevel("levelWin");
         addObject(new Player(), 100, 100);
