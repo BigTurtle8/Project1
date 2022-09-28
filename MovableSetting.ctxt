@@ -1,9 +1,13 @@
 #BlueJ class context
 comment0.target=MovableSetting
+comment0.text=\r\n\ @Marcus\ A.\r\n\ \r\n\ Collection\ and\ controller\ of\ MovableSettingActors\r\n\ Ensures\ that\ setting\ moves\ with\ each\ other\r\n\ to\ give\ illusion\ of\ movement\r\n
 comment1.params=
 comment1.target=MovableSetting()
+comment1.text=\r\n\ Initializes\ collection\ of\ actors,\ speed\r\n
 comment2.params=actor
 comment2.target=void\ add(MovableSettingActor)
+comment2.text=\r\n\ Adds\ a\ MovableSettingActor\ to\ be\ moved\r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ Even\ though\ MovableSetting\ is\ not\ a\ subclass\ of\ Actor,\r\n\ this\ is\ called\ every\ frame\ in\ the\ World\ classes\r\n\ \r\n\ Calls\ each\ MovableSettingActor\ to\ move\ (see\ \r\n\ MovableSettingActor\ class).\ If\ a\ blocking\r\n\ MovableSettingActor\ would\ move\ into\ the\ player,\ \r\n\ instead\ finds\ the\ closest\ position\ next\ to\ the\ \r\n\ player\ that\ isn't\ intersecting.\ Then,\ actors\ \r\n\ that\ have\ moved\ are\ directly\ moved\ to\ where\ \r\n\ they\ should\ be,\ and\ then\ the\ rest\ of\ the\ \r\n\ actors\ are\ moved\ the\ new,\ correct\ distance.\r\n
 numComments=4

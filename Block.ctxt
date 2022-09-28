@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=Block
+comment0.text=\r\n\ @Marcus\ A.\r\n\ \r\n\ Subclass\ of\ MovableSettingActor.\ Basic\r\n\ blocking\ object\ that\ player\ can't\ move\r\n\ through.\r\n
 comment1.params=num
 comment1.target=Block(java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ class\ Block\r\n\ Takes\ a\ String\ argument\ to\ define\ what\r\n\ image\ it\ should\ use.\r\n
 comment2.params=
 comment2.target=boolean\ isBlocking()
+comment2.text=\r\n\ Defines\ abstact\ method\ from\r\n\ MovableSettingActor.\ Sets\ that\ players\ should\r\n\ \r\n
 numComments=3

@@ -1,15 +1,22 @@
 #BlueJ class context
 comment0.target=GravityActor
+comment0.text=\r\n\ @Marcus\ A.\r\n\ \r\n\ Reimplimentation\ of\ Mayflower\ Lab\ 6\ gravity.\r\n\ Extends\ AnimatedActor\ and\ uses\ physics-based\r\n\ free-fall\ acceleration\ to\ simulate\ gravity\r\n\ for\ actors.\r\n
 comment1.params=
 comment1.target=GravityActor()
+comment1.text=\r\n\ Constructor\ of\ GravityActor.\ Sets\ the\r\n\ actor's\ initial\ velocity.\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Called\ every\ frame.\ Moves\ actor\ down\r\n\ the\ current\ velocity\ then\ increases\r\n\ that\ velocity.\ If\ it\ would\ move\ into\r\n\ a\ blocking\ object,\ it\ resets\ and\ then\r\n\ sets\ the\ velocity\ to\ 1\ so\ that\ it\r\n\ eventually\ settles\ on\ the\ ground.\r\n
 comment3.params=
 comment3.target=boolean\ isFalling()
+comment3.text=\r\n\ Tests\ whether\ the\ object\ is\ falling\r\n\ by\ seeing\ whether\ moving\ it\ down\ a\ small\r\n\ amount\ would\ cause\ it\ to\ intersect\ with\r\n\ a\ blocking\ object.\r\n
 comment4.params=
 comment4.target=boolean\ isBlocked()
+comment4.text=\r\n\ Returns\ a\ boolean\ of\ whether\ the\ \r\n\ actor\ is\ currently\ touching\ a\ block.\r\n
 comment5.params=
 comment5.target=int\ getVelocity()
+comment5.text=\r\n\ Returns\ the\ actor's\ current\ downward\ velocity.\r\n
 comment6.params=v
 comment6.target=void\ setVelocity(int)
+comment6.text=\r\n\ Sets\ the\ actor's\ current\ downward\ velocity.\r\n
 numComments=7

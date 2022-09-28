@@ -1,20 +1,29 @@
 import mayflower.*;
 
-// still WIP
-
-// a collection of MovableSettingActors
-// so they move and don't move at the same time
+/**
+ * @Marcus A.
+ * 
+ * Collection and controller of MovableSettingActors
+ * Ensures that setting moves with each other
+ * to give illusion of movement
+ */
 public class MovableSetting
 {
     private MovableSettingActor[] settingActors;
-    private int speed = 4;
+    private int speed;
     
+    /**
+     * Initializes collection of actors, speed
+     */
     public MovableSetting()
     {
         this.settingActors = new MovableSettingActor[0];
         speed = 4;
     }
     
+    /**
+     * Adds a MovableSettingActor to be moved
+     */
     public void add(MovableSettingActor actor)
     {
         MovableSettingActor[] temp = new MovableSettingActor[settingActors.length + 1];
@@ -28,12 +37,24 @@ public class MovableSetting
         settingActors = temp;
     }
     
-    // KEY_LEFT = 37
-    // KEY_RIGHT = 39
+    /**
+     * Even though MovableSetting is not a subclass of Actor,
+     * this is called every frame in the World classes
+     * 
+     * Calls each MovableSettingActor to move (see 
+     * MovableSettingActor class). If a blocking
+     * MovableSettingActor would move into the player, 
+     * instead finds the closest position next to the 
+     * player that isn't intersecting. Then, actors 
+     * that have moved are directly moved to where 
+     * they should be, and then the rest of the 
+     * actors are moved the new, correct distance.
+     */
     public void act()
     {
         int tempDist = speed;
         
+        // loops through all MovableSettingActors
         for (int i = 0; i < settingActors.length; i++)
         {
             MovableSettingActor a = settingActors[i];
@@ -44,12 +65,13 @@ public class MovableSetting
                 // how far ALREADY MOVED setting needs to adjust
                 int temp = a.findClosestLegalPosition(tempDist, dir);
                 
-                // sets already moved settingactors to correct position
+                // sets already moved MovableSettingActors to correct position
                 for (int j = i - 1; j >= 0; j--)
                 {
                     settingActors[j].correctMove(temp);
                 }
                 
+                // sets speed for future actors to be correct
                 tempDist = tempDist - Math.abs(temp);
             }
         }

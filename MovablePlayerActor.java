@@ -1,5 +1,12 @@
 import mayflower.*;
 
+/**
+ * @Marcus A.
+ * 
+ * Extends GravityActor. Defines how 
+ * a player controlled character
+ * should move.
+ */
 public class MovablePlayerActor extends GravityActor
 {
     private Animation idle, idleLeft;
@@ -16,6 +23,10 @@ public class MovablePlayerActor extends GravityActor
     private String currentAction;
     private String direction;
     
+    /**
+     * Constructor of MovablePlayerActor.
+     * Initializes vairable.
+     */
     public MovablePlayerActor()
     {
         walkRight = null;
@@ -27,6 +38,12 @@ public class MovablePlayerActor extends GravityActor
         canJump = true;
     }
     
+    /**
+     * Called every frame. Sets the animation of the
+     * player to be correct depending on user input.
+     * Also defines the vertical movement of the player,
+     * including jumping, double jump, and going up ladders.
+     */
     public void act()
     {
         super.act();
@@ -36,72 +53,31 @@ public class MovablePlayerActor extends GravityActor
             newAction = "idle";
         }
         
-        //int x = getX();
-        //int y = getY();
         int w = getWidth();
         int h = getHeight();
         
-        int dist;
+        // setting animations depending on input
         if (Mayflower.isKeyDown(Keyboard.KEY_RIGHT) &&
             !(w + getX() > 800)) {
-            //setLocation(getX() + 4, getY());
             newAction = "walkRight";
             direction = "right";
-            
-            //if (isBlocked()) 
-            //{
-            //    dist = 4;
-            //    while (isBlocked()) 
-            //    {
-            //        dist -= 1;
-            //        setLocation(getX() - (dist + 1), getY());
-            //        setLocation(getX() + dist, getY());
-            //    }
-            //}
         }
             
         else if (Mayflower.isKeyDown(Keyboard.KEY_LEFT) &&
             !(getX() < 0)) {
-            //setLocation(getX() - 4, getY());
             newAction = "walkLeft";
             direction = "left";
-            
-            //if (isBlocked()) 
-            //{
-            //    dist = 4;
-            //    while (isBlocked()) 
-            //    {
-            //        dist -= 1;
-            //        setLocation(getX() + (dist + 1), getY());
-            //        setLocation(getX() - dist, getY());
-            //    }
-            //}
         }
-        
-        //else if (Mayflower.isKeyDown(Keyboard.KEY_UP) &&
-        //    !(getY() < 0)) {
-        //    setLocation(getX(), getY() - 1);
-        //    
-        //    if (isBlocked())
-        //        setLocation(getX(), getY() + 1);
-        //}
-        //
-        //else if (Mayflower.isKeyDown(Keyboard.KEY_DOWN) &&
-        //    !(h + getY() > 600)) {
-        //    setLocation(getX(), getY() + 1);
-        //    
-        //    if (isBlocked())
-        //        setLocation(getX(), getY() + 1);
-        //}
             
         else 
         {
+            // if not moving, idle
             newAction = "idle";
             if (direction != null && direction.equals("left"))
                 newAction = "idleLeft";
-            
         }
         
+        // ladder movement
         if (isTouching(Ladder.class) && Mayflower.isKeyDown(Keyboard.KEY_UP)) 
         {
             setCanJump(false);
@@ -109,24 +85,30 @@ public class MovablePlayerActor extends GravityActor
             setLocation(getX(), getY() - 4);
         }
         
-        if (canJump && Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) {
+        // jump and double jump
+        if (canJump && Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) 
+        {
             setVelocity(-18);
-        } else if (canJump && Mayflower.isKeyPressed(Keyboard.KEY_UP) && doubleJumpAvail) {
+        } 
+        else if (canJump && Mayflower.isKeyPressed(Keyboard.KEY_UP) && doubleJumpAvail) 
+        {
             setVelocity(-18);
             doubleJumpAvail = false;
         }
         
+        // setting fall animation, overrides other animations
         if (isFalling())
         {
             newAction = "fallRight";
             if (direction != null && direction.equals("left"))
                 newAction = "fallLeft";
-        } else {
+        } 
+        else 
+        {
             doubleJumpAvail = true;
         }
-            
         
-        
+        // actually setting the animations
         if (newAction != null && !newAction.equals(currentAction))
         {
             if (newAction.equals("idle"))
@@ -150,57 +132,75 @@ public class MovablePlayerActor extends GravityActor
             currentAction = newAction;
         }
         
-        
         setCanJump(true);
     }
     
-    public void setAnimation(Animation a)
-    {
-        super.setAnimation(a);
-    }
-    
+    /**
+     * Sets walk animations to use.
+     */
     public void setWalkAnimations(Animation right, Animation left)
     {
         walkRight = right;
         walkLeft = left;
     }
     
+    /**
+     * Sets idle animations to use.
+     */
     public void setIdleAnimations(Animation right, Animation left) 
     {
         idle = right;
         idleLeft = left;
     }
     
+    /**
+     * Sets fall animations to use.
+     */
     public void setFallAnimations(Animation right, Animation left)
     {
         fallRight = right;
         fallLeft = left;
     }
     
+    /**
+     * Sets jump animations to use.
+     */
     public void setJumpAnimations(Animation right, Animation left) 
     {    
         jumpRight = right;
         jumpLeft = left;
     }
     
+    /**
+     * Sets hurt animations to use.
+     */
     public void setHurtAnimations(Animation right, Animation left) 
     {    
         hurtRight = right;
         hurtLeft = left;
     }
     
+    /**
+     * Sets death animations to use.
+     */
     public void setDeadAnimations(Animation right, Animation left) 
     {    
         deadRight = right;
         deadLeft = left;
     }
     
+    /**
+     * Sets slide animations to use.
+     */
     public void setSlideAnimations(Animation right, Animation left) 
     {    
         slideRight = right;
         slideLeft = left;
     }
     
+    /**
+     * Sets whether the player can jump at the current time.
+     */
     public void setCanJump(boolean bool) 
     {
         canJump = bool;
