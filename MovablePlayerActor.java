@@ -139,7 +139,7 @@ public class MovablePlayerActor extends GravityActor
         List<Interactable> intersectingObjects = getIntersectingObjects(Interactable.class);
         for (Interactable i : intersectingObjects)
         {
-            i.doEffect();
+            i.doEffect(this);
         }
         
         // checks if fell off screen, if so then reset world
@@ -151,6 +151,12 @@ public class MovablePlayerActor extends GravityActor
             
             wo.resetWorld();
         }
+    }
+    
+    public void takeDamage(int dam)
+    {
+        GameWorld w = (GameWorld) (getWorld());
+        w.changeLives(-1 * dam);
     }
     
     /**

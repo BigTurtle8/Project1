@@ -1,17 +1,18 @@
 import mayflower.*;
 
 /**
- * @Andrew Wang
+ * @ Marcus A.
  * 
- * Creates the Level One World 
+ * Alternate version of game where player
+ * keeps going through randomized worlds
+ * until they run out of life.
  */
-
-public class LevelOneWorld extends GameWorld
+public class InfiniteWorld extends GameWorld
 {
     private String[][] tiles;
     private MovableSetting setting;
     
-    public LevelOneWorld(int s, int l)
+    public InfiniteWorld(int s, int l)
     {
         /**
          * Sets the screen with the number of lives, score, and level one background
@@ -22,17 +23,13 @@ public class LevelOneWorld extends GameWorld
         setBackground("img/BG/Untitled Drawing.png");
         tiles = new String[6][32];
         
-        super.changeCurrentLevel("Level One");
+        super.changeCurrentLevel("Infinite");
         
         this.setting = new MovableSetting();
         
-        buildWorld();
+        buildRandomWorld();
     }
     
-    /**
-     * Makes setting move and runs
-     * world-switching method in superclass.
-     */
     public void act()
     {
         super.act();
@@ -40,37 +37,63 @@ public class LevelOneWorld extends GameWorld
     }
     
     /**
-     * Builds the world.
+     * Sets world with blocks and player
+     * randomly. Will be moved to new class.
      */
-    public void buildWorld() {
-           //0  , 1  , 2  , 3  , 4  , 5  , 6  , 7  , 8  , 9  , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18 , 19 , 20 , 21 , 22 , 23 , 24 , 25 , 26 , 27 , 28 , 29 , 30 , 31 
-        String[][] tempTiles = 
+    public void buildRandomWorld() {
+        for(int r = tiles.length - 1; r >= 0; r--) 
         {
-            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "C", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
-            {" ", " ", " ", " ", " ", " ", " ", " ", " ", "C", " ", " ", " ", " ", "G", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "C", " ", " ", " ", " ", "C", " "},
-            {" ", " ", " ", " ", " ", " ", " ", " ", " ", "G", " ", " ", " ", " ", "D", "G", " ", " ", "H", "G", " ", " ", "G", "G", "G", "G", "T", "G", " ", " ", "G", " "},
-            {" ", " ", " ", " ", " ", " ", " ", "G", " ", "D", " ", " ", " ", "G", "D", "D", " ", " ", "G", " ", " ", " ", " ", " ", " ", " ", "G", " ", " ", " ", " ", " "},
-            {" ", " ", " ", "P", " ", "G", "T", "D", "T", "D", "T", " ", " ", "D", "D", "D", "G", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "C", "T", "F"},
-            {" ", " ", " ", "G", "G", "D", "G", "D", "G", "D", "G", "G", "G", "D", "D", "D", "D", "G", "G", "G", "G", "G", "G", "G", "G", "G", "G", "G", "G", "G", "G", "G"}
-        };
+            for(int c = 0; c < tiles[0].length; c++) 
+            {
+                if (r == 5) 
+                {
+                    tiles[r][c] = "B";
+                }
+                else if (r == 4 && Math.random() > .7)
+                {
+                    tiles[r][c] = "B";
+                    if (Math.random() > 0.5) 
+                    {
+                        tiles[r][c] = "L";
+                    }
+                    if (Math.random() > 0.3) 
+                    {
+                        tiles[r][c] = "T";
+                    }
+                }
+                else if (r == 3 && tiles[r + 1][c].equals("Block") && 
+                    Math.random() > .7)
+                {
+                    tiles[r][c] = "Block";
+                }
+                else 
+                {
+                    tiles [r][c] = "";
+                }
+            }
+            
+        }
         
-        tiles = tempTiles;
+        //tiles[0][0] = "Player";
+        tiles[tiles.length - 2][tiles[0].length - 1] = "F";
+        
+        addObject(new Player(), 350, 0);
+        //addObject(new Trap(),400, 400);
+        
         // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
         {
             for (int c = 0; c < tiles[0].length; c++)
             {
-                if (tiles[r][c].equals("G"))
+                if (tiles[r][c].equals("B"))
                 {
-                    // grass
-                    Block b = new Block("2");
-                    addObject(b, c * 100, r * 100);
-                    setting.add(b);
-                }
-                else if (tiles[r][c].equals("D"))
-                {
-                    // dirt
-                    Block b = new Block("5");
+                    Block b;
+                    if (r != 0 && tiles[r - 1][c].equals("B"))
+                        b = new Block("5");
+                      
+                    else 
+                        b = new Block("2");
+                        
                     addObject(b, c * 100, r * 100);
                     setting.add(b);
                 }
@@ -120,6 +143,6 @@ public class LevelOneWorld extends GameWorld
     
     public void resetWorld()
     {
-        Mayflower.setWorld(new LevelOneWorld(getScore(), getLives()));
+        Mayflower.setWorld(new InfiniteWorld(getScore(), getLives()));
     }
 }

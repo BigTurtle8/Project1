@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=InfiniteWorld
+comment0.text=\r\n\ @\ Marcus\ A.\r\n\ \r\n\ Alternate\ version\ of\ game\ where\ player\r\n\ keeps\ going\ through\ randomized\ worlds\r\n\ until\ they\ run\ out\ of\ life.\r\n
+comment1.params=s\ l
+comment1.target=InfiniteWorld(int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ buildRandomWorld()
+comment3.text=\r\n\ Sets\ world\ with\ blocks\ and\ player\r\n\ randomly.\ Will\ be\ moved\ to\ new\ class.\r\n
+comment4.params=
+comment4.target=void\ resetWorld()
+numComments=5

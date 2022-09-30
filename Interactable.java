@@ -28,5 +28,5 @@ public abstract class Interactable extends MovableSettingActor
         return false;
     }
     
-    public abstract void doEffect();
+    public abstract void doEffect(MovablePlayerActor a);
 }

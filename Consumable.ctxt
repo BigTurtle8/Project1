@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.target=Consumable
 comment0.text=\r\n\ @Esteban\ M.\r\n\ \r\n\ Abstract\ class\ that\ extends\ interactable.\r\n\ Automatically\ destroys\ iteself\ after\ \r\n\ doEffect()\ is\ called.\r\n
-comment1.params=
-comment1.target=void\ doEffect()
+comment1.params=a
+comment1.target=void\ doEffect(MovablePlayerActor)
 comment1.text=\r\n\ Does\ effect\ and\ then\ removes\ self.\r\n
-comment2.params=
-comment2.target=void\ effect()
+comment2.params=a
+comment2.target=void\ effect(MovablePlayerActor)
 comment2.text=\r\n\ Where\ subclasses\ define\ what\ is\ done\ before\ removing\ self.\r\n
 numComments=3

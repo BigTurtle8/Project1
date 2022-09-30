@@ -21,7 +21,7 @@ public class Flag extends Interactable
     /**
      * Brings the player to next world when touched.
      */
-    public void doEffect()
+    public void doEffect(MovablePlayerActor a)
     {
         GameWorld w = (GameWorld) getWorld();
         w.changeWorld();

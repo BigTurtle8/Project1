@@ -27,7 +27,7 @@ public class Ladder extends Interactable
      * Since the effect is hard coded into MovablePlayerActor
      * does not need another effect.
      */
-    public void doEffect()
+    public void doEffect(MovablePlayerActor a)
     {
         
     }

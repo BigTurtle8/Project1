@@ -14,14 +14,14 @@ public class Coin extends Consumable
     public Coin()
     {
         MayflowerImage coin = new MayflowerImage("img/interactable/coin.png");
-        coin.scale(100,100);
+        coin.scale(50,50);
         setImage(coin);
     }
 
     /**
      *Increases the players lives by one if the player touches the heart
     */
-    public void effect()
+    public void effect(MovablePlayerActor a)
     {
             
         //p.setLocation(350,0);

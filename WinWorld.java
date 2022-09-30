@@ -21,11 +21,6 @@ public class WinWorld extends GameWorld
         super.changeHasLost(false);
     }
     
-    public void act()
-    {
-        super.act();
-    }
-    
     public void resetWorld()
     {
         Mayflower.setWorld(new WinWorld(getScore(), getLives()));

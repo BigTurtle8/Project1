@@ -19,12 +19,11 @@ public class Trap extends Consumable
     }
 
     /**
-     *Decreases the players lives by one if the play touches the trap
+     * Decreases the players lives by one if the play touches the trap
      */
-    public void effect()
+    public void effect(MovablePlayerActor a)
     {
         //p.setLocation(350,0);
-        GameWorld w = (GameWorld) (getWorld());
-        w.changeLives(-1);
+        a.takeDamage(1);
     }
 }

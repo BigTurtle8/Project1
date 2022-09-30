@@ -12,9 +12,9 @@ public abstract class Consumable extends Interactable
     /**
      * Does effect and then removes self.
      */
-    public void doEffect()
+    public void doEffect(MovablePlayerActor a)
     {
-        effect();
+        effect(a);
         
         World w = getWorld();
         w.removeObject(this);
@@ -23,5 +23,5 @@ public abstract class Consumable extends Interactable
     /**
      * Where subclasses define what is done before removing self.
      */
-    public abstract void effect();
+    public abstract void effect(MovablePlayerActor a);
 }

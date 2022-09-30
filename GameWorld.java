@@ -91,55 +91,60 @@ public abstract class GameWorld extends World
      * Controls changing worlds
      */
     public void act() {
-        if ((getCurrentLevel().equals("Title Screen")
-              || getCurrentLevel().equals("Game Over")
-              || getCurrentLevel().equals("WIN")) &&
-            Mayflower.isKeyDown(Keyboard.KEY_ENTER))
+        if (Mayflower.isKeyDown(Keyboard.KEY_ENTER))
         {
-            System.out.println("aa");
-            changeHasLost(false);
-            Mayflower.setWorld(new LevelOneWorld(0, 3));
+            if (getCurrentLevel().equals("Title Screen"))
+            {
+                //System.out.println("aa");
+                changeHasLost(false);
+                Mayflower.setWorld(new LevelOneWorld(0, 3));
+            }
+            else if (getCurrentLevel().equals("Game Over")
+              || getCurrentLevel().equals("WIN"))
+            {
+                changeCurrentLevel("Title Screen");
+                //System.out.println("aa");
+                changeHasLost(false);
+                Mayflower.setWorld(new TitleWorld(0, 3));
+            }
         }
         
-        if ((getCurrentLevel().equals("Game Over")
-              || getCurrentLevel().equals("WIN")) &&
-            Mayflower.isKeyDown(Keyboard.KEY_ENTER))
+        if (Mayflower.isKeyDown(Keyboard.KEY_SPACE))
         {
-            System.out.println("aa");
-            changeHasLost(false);
-            Mayflower.setWorld(new TitleWorld(0, 3));
+            if (getCurrentLevel().equals("Title Screen"))
+            {
+                //System.out.println("aa");
+                changeHasLost(false);
+                Mayflower.setWorld(new InfiniteWorld(0, 3));
+            }
         }
-        
-        if (getCurrentLevel().equals("Game Over")) {
-            Mayflower.setWorld(new GameOverWorld(getScore(), getLives()));
-        } 
-        
-        /**
-         * Changes the hasLost to true if they lose all their lives
-         */ 
-        if(lives <= 0) {
-            changeHasLost(true);
-        }
-        
-        // temp
-        if(getCurrentLevel().equals("Level One")) {
-            changeScore(5);
-            //changeLives(-1);
-        }
-        updateText();
-        updateLevelText();
         
         /**
          * Changes the world to the game over world if the player lost
          */  
-        if(getHasLost() == true) {
+        if(getHasLost() == true && !getCurrentLevel().equals("GameOver")) {
+              //System.out.println("player lost, so loading");
               Mayflower.setWorld(new GameOverWorld(getScore(), getLives()));
         }
+        
+        /**
+         * Changes the hasLost to true if they lose all their lives
+         */ 
+        if (lives <= 0 && !getHasLost()) {
+            changeHasLost(true);
+        }
+        
+        updateText();
+        updateLevelText();
     }
     
     public void changeWorld()
     {
-        if (getCurrentLevel().equals("Level One"))
+        if (getCurrentLevel().equals("Infinite"))
+        {
+            Mayflower.setWorld(new InfiniteWorld(getScore(), getLives()));
+        } 
+        else if (getCurrentLevel().equals("Level One"))
         {
             Mayflower.setWorld(new LevelTwoWorld(getScore(), getLives()));
         }
