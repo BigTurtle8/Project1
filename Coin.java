@@ -13,8 +13,8 @@ public class Coin extends Consumable
     
     public Coin()
     {
-        MayflowerImage coin = new MayflowerImage("img/trap/coin.png");
-        coin.scale(50,50);
+        MayflowerImage coin = new MayflowerImage("img/interactable/coin.png");
+        coin.scale(100,100);
         setImage(coin);
     }
 

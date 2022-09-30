@@ -13,8 +13,8 @@ public class Heart extends Consumable
     
     public Heart()
     {
-        MayflowerImage heart = new MayflowerImage("img/trap/heart.png");
-        heart.scale(50,50);
+        MayflowerImage heart = new MayflowerImage("img/interactable/heart.png");
+        heart.scale(100,100);
         setImage(heart);
     }
 
