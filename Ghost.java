@@ -13,7 +13,7 @@ public class Ghost extends Consumable
     private boolean isRight = true;
     public Ghost()
     {
-        MayflowerImage ghost = new MayflowerImage("img/Interactable/ghost.png");
+        MayflowerImage ghost = new MayflowerImage("img/interactable/ghost.png");
         ghost.scale(100,100);
         setImage(ghost);
     }
