@@ -3,4 +3,6 @@ comment0.target=TitleWorld
 comment0.text=\r\n\ @Andrew\ Wang\r\n\ \r\n\ Creates\ the\ title\ World\r\n
 comment1.params=s\ l
 comment1.target=TitleWorld(int,\ int)
-numComments=2
+comment2.params=
+comment2.target=void\ resetWorld()
+numComments=3

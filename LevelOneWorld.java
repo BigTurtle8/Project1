@@ -19,7 +19,7 @@ public class LevelOneWorld extends GameWorld
         
         super(s,l);
         setBackground("img/BG/Untitled Drawing.png");
-        tiles = new String[6][24];
+        tiles = new String[6][32];
         
         super.changeCurrentLevel("Level One");
         
@@ -33,6 +33,7 @@ public class LevelOneWorld extends GameWorld
         super.act();
         setting.act();
     }
+    
     /**
      * Sets world with blocks and player
      */
@@ -71,6 +72,7 @@ public class LevelOneWorld extends GameWorld
         }
         
         //tiles[0][0] = "Player";
+        tiles[tiles.length - 2][tiles[0].length - 1] = "Flag";
         
         // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
@@ -89,22 +91,27 @@ public class LevelOneWorld extends GameWorld
                     addObject(b, c * 100, r * 100);
                     setting.add(b);
                 }
-                if (tiles[r][c].equals("Ladder"))
+                else if (tiles[r][c].equals("Ladder"))
                 {
                     Ladder l = new Ladder();
                     addObject(l, c * 100, r * 100);
                     setting.add(l);
                 }
-                //else if (tiles[r][c].equals("Player"))
-                //{
-                //    addObject(new Player(), c * 100, r * 100);
-                //}
-                
-                if (tiles[r][c].equals("Trap"))
+                else if (tiles[r][c].equals("Player"))
+                {
+                    addObject(new Player(), c * 100, r * 100);
+                }
+                else if (tiles[r][c].equals("Trap"))
                 {
                     Trap l = new Trap();
                     addObject(l, c * 100, r * 100);
                     setting.add(l);
+                }
+                else if (tiles[r][c].equals("Flag"))
+                {
+                    Flag f = new Flag();
+                    addObject(f, c * 100, r * 100);
+                    setting.add(f);
                 }
             }
         }
@@ -112,5 +119,10 @@ public class LevelOneWorld extends GameWorld
         
         addObject(new Player(), 350, 0);
         //addObject(new Trap(),400, 400);
+    }
+    
+    public void resetWorld()
+    {
+        Mayflower.setWorld(new LevelOneWorld(getScore(), getLives()));
     }
 }

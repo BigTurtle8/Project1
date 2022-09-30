@@ -22,4 +22,9 @@ public class LevelThreeWorld extends GameWorld
     {
         super.act();
     }
+    
+    public void resetWorld()
+    {
+        Mayflower.setWorld(new LevelThreeWorld(getScore(), getLives()));
+    }
 }

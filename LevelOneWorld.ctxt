@@ -8,4 +8,6 @@ comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ buildWorld()
 comment3.text=\r\n\ Sets\ world\ with\ blocks\ and\ player\r\n
-numComments=4
+comment4.params=
+comment4.target=void\ resetWorld()
+numComments=5

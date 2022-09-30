@@ -18,19 +18,15 @@ public class Ladder extends Interactable
     */
     public Ladder()
     {
-        MayflowerImage ladder = new MayflowerImage("img/ladder/ladder.png");
+        MayflowerImage ladder = new MayflowerImage("img/interactable/ladder.png");
         ladder.scale(100,100);
         setImage(ladder);
     }
-
-    /**
-     * Empty act method as it doesnt need to do anything
-    */
-    public void act()
-    {
-        
-    }
     
+    /**
+     * Since the effect is hard coded into MovablePlayerActor
+     * does not need another effect.
+     */
     public void doEffect()
     {
         

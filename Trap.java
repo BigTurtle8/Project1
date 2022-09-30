@@ -13,7 +13,7 @@ public class Trap extends Consumable
     
     public Trap()
     {
-        MayflowerImage trap = new MayflowerImage("img/trap/trap.png");
+        MayflowerImage trap = new MayflowerImage("img/interactable/trap.png");
         trap.scale(100,100);
         setImage(trap);
     }
@@ -23,9 +23,6 @@ public class Trap extends Consumable
      */
     public void effect()
     {
-        Object a = getOneIntersectingObject(Player.class);
-        Player p = (Player) a;
-            
         //p.setLocation(350,0);
         GameWorld w = (GameWorld) (getWorld());
         w.changeLives(-1);

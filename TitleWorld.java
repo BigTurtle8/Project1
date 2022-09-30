@@ -20,5 +20,8 @@ public class TitleWorld extends GameWorld
         //addObject(new Player(), 100, 100);
     }
     
-
+    public void resetWorld()
+    {
+        Mayflower.setWorld(new TitleWorld(getScore(), getLives()));
+    }
 }

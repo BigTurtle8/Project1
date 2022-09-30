@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Flag
+comment0.text=\r\n\ @Marcus\ A.\r\n\ \r\n\ An\ interactable\ that\ ends\ the\ level\r\n\ and\ brings\ the\ player\ to\ the\ next\ one.\r\n
+comment1.params=
+comment1.target=Flag()
+comment1.text=\r\n\ Constructor\ for\ class\ Flag\r\n
+comment2.params=
+comment2.target=void\ doEffect()
+comment2.text=\r\n\ Brings\ the\ player\ to\ next\ world\ when\ touched.\r\n
+numComments=3

@@ -23,4 +23,9 @@ public class LevelTwoWorld extends GameWorld
     {
         super.act();
     }
+    
+    public void resetWorld()
+    {
+        Mayflower.setWorld(new LevelTwoWorld(getScore(), getLives()));
+    }
 }

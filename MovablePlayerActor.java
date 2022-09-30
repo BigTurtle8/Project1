@@ -135,10 +135,21 @@ public class MovablePlayerActor extends GravityActor
         
         setCanJump(true);
         
+        // trigger effects of all touching interactables
         List<Interactable> intersectingObjects = getIntersectingObjects(Interactable.class);
         for (Interactable i : intersectingObjects)
         {
             i.doEffect();
+        }
+        
+        // checks if fell off screen, if so then reset world
+        // with -1 life
+        if (getY() > 600)
+        {
+            GameWorld wo = (GameWorld) (getWorld());
+            wo.changeLives(-1);
+            
+            wo.resetWorld();
         }
     }
     
