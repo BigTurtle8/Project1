@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Spikes
+comment0.text=\r\n\ @Andrew\ Wang\r\n\r\n\ Creates\ a\ spike\ that\ moves\ and\ interacts\ with\ the\ player\r\n
+comment1.params=
+comment1.target=Spikes()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ heart\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Moves\ the\ spikes\ and\ changes\ directions\ when\ it\ is\ blocked\r\n
+comment3.params=
+comment3.target=void\ effect()
+comment3.text=\r\nIncreases\ the\ players\ lives\ by\ one\ if\ the\ player\ touches\ the\ heart\r\n
+comment4.params=
+comment4.target=boolean\ canMove()
+comment5.params=
+comment5.target=void\ move()
+numComments=6

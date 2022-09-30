@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Heart
+comment0.text=\r\n\ @Andrew\ Wang\r\n\r\n\ Creates\ a\ heart\ that\ interacts\ with\ the\ player\r\n
+comment1.params=
+comment1.target=Heart()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ heart\r\n
+comment2.params=
+comment2.target=void\ effect()
+comment2.text=\r\nIncreases\ the\ players\ lives\ by\ one\ if\ the\ player\ touches\ the\ heart\r\n
+numComments=3
