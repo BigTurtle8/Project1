@@ -12,9 +12,10 @@ public class GameOverWorld extends GameWorld
     {
         super(s,l);
         super.changeCurrentLevel("Game Over");
-        setBackground("img/BG/BG.png");
-        showText("Your Score: " + super.getScore() + " Your lives: " + super.getLives(),100, 250, Color.BLACK);
-        showText("You lost! Press enter to try again.",100, 300, Color.BLACK);
+        setBackground("img/BG/Untitled Drawing.png");
+        showText("GAME OVER",75, 200, 300, Color.BLACK);
+        showText("Your Score: " + super.getScore() + " Your lives: " + super.getLives(),150, 450, Color.BLACK);
+        showText("You lost! Press enter to try again.",150, 500, Color.BLACK);
         super.changeHasLost(true);
     }
 }

@@ -28,6 +28,9 @@ public class GameWorld extends World
         return currentLevel;
     }
 
+    public GameWorld getGameWorld() {
+        return this;
+    }
     /**
      * Changes the current level
      */
@@ -74,7 +77,14 @@ public class GameWorld extends World
      * Updates the text on the screen to accurately display the score and number of lives
      */
     public void updateText() {
-        showText(getCurrentLevel() + " Score: " + score + " Lives: " + lives, 10, 30, Color.BLACK);
+        showText(" Score: " + score + " Lives: " + lives, 10, 30, Color.BLACK);
+    }
+    
+    /**
+     * Update the text on the screen to show the current level
+     */
+    public void updateLevelText() {
+        showText(getCurrentLevel(),590, 30, Color.BLACK);
     }
 
     public void act() {
@@ -116,13 +126,16 @@ public class GameWorld extends World
                     Mayflower.setWorld(new WinWorld(getScore(), getLives()));
                 }
             }
+            else if(getCurrentLevel().equals("Game Over")) {
+                Mayflower.setWorld(new TitleWorld(0,3));
+            }
         }
-        if(getCurrentLevel().equals("Level Two")) {
+        if(getCurrentLevel().equals("Level One")) {
             changeScore(5);
             //changeLives(-1);
         }
         updateText();
-        
+        updateLevelText();
     }
 
 }

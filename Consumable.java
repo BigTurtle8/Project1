@@ -3,27 +3,25 @@ import mayflower.*;
 /**
  * @Esteban M.
  * 
- * 
- * 
+ * Abstract class that extends interactable.
+ * Automatically destroys iteself after 
+ * doEffect() is called.
 */
-public class Consumable extends Interactable
+public abstract class Consumable extends Interactable
 {
     /**
-     * 
-     * 
-    */
-    public Consumable()
-    {
-        
-    }
-    
-    public void act()
-    {
-        
-    }
-    
+     * Does effect and then removes self.
+     */
     public void doEffect()
     {
+        effect();
         
+        World w = getWorld();
+        w.removeObject(this);
     }
+    
+    /**
+     * Where subclasses define what is done before removing self.
+     */
+    public abstract void effect();
 }

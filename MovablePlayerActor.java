@@ -1,4 +1,5 @@
 import mayflower.*;
+import java.util.List;
 
 /**
  * @Marcus A.
@@ -133,6 +134,12 @@ public class MovablePlayerActor extends GravityActor
         }
         
         setCanJump(true);
+        
+        List<Interactable> intersectingObjects = getIntersectingObjects(Interactable.class);
+        for (Interactable i : intersectingObjects)
+        {
+            i.doEffect();
+        }
     }
     
     /**

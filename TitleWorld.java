@@ -13,8 +13,9 @@ public class TitleWorld extends GameWorld
          * Sets the screen with the number of lives, score, introductory text, and title screen*/
         
         super(s,l);
-        setBackground("img/BG/BG.png");
-        showText("Welcome to the game, press enter to begin",100, 300, Color.BLACK);
+        setBackground("img/BG/Untitled Drawing.png");
+        showText("Welcome to the game", 75, 40, 300, Color.BLACK);
+        showText("Press enter to begin", 225, 400, Color.BLACK);
         
         //addObject(new Player(), 100, 100);
     }

@@ -13,7 +13,7 @@ public class LevelThreeWorld extends GameWorld
          * Sets the screen with the number of lives, score, and level three background
          */
         super(s,l);
-        setBackground("img/BG/BG.png");
+        setBackground("img/BG/Untitled Drawing.png");
         super.changeCurrentLevel("Level Three");
         addObject(new Player(), 100, 100);
     }

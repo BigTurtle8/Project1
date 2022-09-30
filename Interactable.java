@@ -11,14 +11,6 @@ import mayflower.*;
 public abstract class Interactable extends MovableSettingActor
 {
     /**
-     * Empty constructor for Interactable class
-    */
-    public Interactable()
-    {
-        
-    }
-    
-    /**
      * Empty act method for Interactable class as not needed
     */
     public void act() 

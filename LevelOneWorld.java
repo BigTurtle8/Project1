@@ -18,7 +18,7 @@ public class LevelOneWorld extends GameWorld
          */
         
         super(s,l);
-        setBackground("img/BG/BG.png");
+        setBackground("img/BG/Untitled Drawing.png");
         tiles = new String[6][24];
         
         super.changeCurrentLevel("Level One");
@@ -52,6 +52,10 @@ public class LevelOneWorld extends GameWorld
                     {
                         tiles[r][c] = "Ladder";
                     }
+                    if (Math.random() > 0.6) 
+                    {
+                        tiles[r][c] = "Trap";
+                    }
                 }
                 else if (r == 3 && tiles[r + 1][c].equals("Block") && 
                     Math.random() > .7)
@@ -63,10 +67,12 @@ public class LevelOneWorld extends GameWorld
                     tiles [r][c] = "";
                 }
             }
+            
         }
         
         //tiles[0][0] = "Player";
         
+        // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
         {
             for (int c = 0; c < tiles[0].length; c++)
@@ -93,10 +99,18 @@ public class LevelOneWorld extends GameWorld
                 //{
                 //    addObject(new Player(), c * 100, r * 100);
                 //}
+                
+                if (tiles[r][c].equals("Trap"))
+                {
+                    Trap l = new Trap();
+                    addObject(l, c * 100, r * 100);
+                    setting.add(l);
+                }
             }
         }
         
         
         addObject(new Player(), 350, 0);
+        //addObject(new Trap(),400, 400);
     }
 }
