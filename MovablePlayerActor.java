@@ -20,6 +20,7 @@ public class MovablePlayerActor extends GravityActor
     
     private boolean doubleJumpAvail;
     private boolean canJump;
+    private boolean takingDamage;
     
     private String currentAction;
     private String direction;
@@ -76,6 +77,14 @@ public class MovablePlayerActor extends GravityActor
             newAction = "idle";
             if (direction != null && direction.equals("left"))
                 newAction = "idleLeft";
+                
+            // if damaged, start hurt anim
+            if (takingDamage)
+            {
+                newAction = "hurtRight";
+                if (direction != null && direction.equals("left"))
+                    newAction = "hurtLeft";
+            }
         }
         
         // ladder movement
@@ -117,6 +126,12 @@ public class MovablePlayerActor extends GravityActor
                 
             else if (newAction.equals("idleLeft"))
                 setAnimation(idleLeft);
+                
+            else if (newAction.equals("hurtRight"))
+                setAnimation(hurtRight);
+                
+            else if (newAction.equals("hurtLeft"))
+                setAnimation(hurtLeft);
                 
             else if (newAction.equals("walkRight"))
                 setAnimation(walkRight);
