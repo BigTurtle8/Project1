@@ -130,8 +130,8 @@ public class Player extends MovablePlayerActor
             hRFilenames[i] = "img/cat/Hurt (" + (i + 1) + ").png";
             hLFilenames[i] = "img/cat/Hurt (" + (i + 1) + ").png";
         }
-        Animation hurtRight = new Animation(50, hRFilenames);
-        Animation hurtLeft = new Animation(50, hLFilenames);
+        Animation hurtRight = new OneTimeAnimation(50, hRFilenames);
+        Animation hurtLeft = new OneTimeAnimation(50, hLFilenames);
         
         hurtRight.scale(100, 87);
         hurtLeft.scale(100, 87);
