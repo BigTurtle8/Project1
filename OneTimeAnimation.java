@@ -31,4 +31,12 @@ public class OneTimeAnimation extends Animation
 		// otherwise, continue through anim normally
 		return super.getNextFrame();
 	}
+	
+	/**
+	 * Returns whether the animation has finished.
+	 */
+	public boolean isFinished()
+	{
+		return getCurrentFrame() == getFrames().length;
+	}
 }
