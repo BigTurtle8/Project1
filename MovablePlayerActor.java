@@ -70,7 +70,6 @@ public class MovablePlayerActor extends GravityActor
             newAction = "walkLeft";
             direction = "left";
         }
-            
         else 
         {
             // if not moving, idle
@@ -78,7 +77,7 @@ public class MovablePlayerActor extends GravityActor
             if (direction != null && direction.equals("left"))
                 newAction = "idleLeft";
                 
-            // if damaged, start hurt anim
+            // if damaged and anim not done, hurt
             if (takingDamage)
             {
                 newAction = "hurtRight";
@@ -95,7 +94,8 @@ public class MovablePlayerActor extends GravityActor
             setLocation(getX(), getY() - 4);
         }
         
-        // jump and double jump
+        // jump and double jump,
+        // also adding anim
         if (canJump && Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) 
         {
             setVelocity(-18);
@@ -105,11 +105,20 @@ public class MovablePlayerActor extends GravityActor
             setVelocity(-18);
             doubleJumpAvail = false;
         }
+        else if (getVelocity() < 0)
+        {
+            // if going up, then negative downward velocity
+            // so maintain jump anim
+            
+            newAction = "jumpRight";
+            if (direction != null && direction.equals("left"))
+                newAction = "jumpLeft";
+        }
         
         // if currently taking damage,
         // checks whether anim is done.
         // if so, go back to idle
-        if (newAction != null && (newAction.equals("hurtRight") || newAction.equals("hurtRight"))
+        if (currentAction != null && (currentAction.equals("hurtRight") || currentAction.equals("hurtRight"))
         {
             OneTimeAnimation hurtAnim = (OneTimeAnimation) getAnimation();
             if (hurtAnim.isFinished())
@@ -117,6 +126,8 @@ public class MovablePlayerActor extends GravityActor
                 newAction = "idle";
                 if (direction != null && direction.equals("left"))
                     newAction = "idleLeft";
+                    
+                takingDamage = false;
             }
         }
         
@@ -159,9 +170,17 @@ public class MovablePlayerActor extends GravityActor
             else if (newAction.equals("fallLeft"))
                 setAnimation(fallLeft);
                 
+            else if (newAction.equals("jumpRight"))
+                setAnimation(jumpRight);
+                
+            else if (newAction.equals("jumpLeft"))
+                setAnimation(jumpLeft);
+                
             currentAction = newAction;
         }
         
+        // resets jump availability
+        // so can be turned back off if on ladder
         setCanJump(true);
         
         // trigger effects of all touching interactables
