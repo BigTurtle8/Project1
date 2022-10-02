@@ -106,6 +106,20 @@ public class MovablePlayerActor extends GravityActor
             doubleJumpAvail = false;
         }
         
+        // if currently taking damage,
+        // checks whether anim is done.
+        // if so, go back to idle
+        if (newAction != null && (newAction.equals("hurtRight") || newAction.equals("hurtRight"))
+        {
+            OneTimeAnimation hurtAnim = (OneTimeAnimation) getAnimation();
+            if (hurtAnim.isFinished())
+            {
+                newAction = "idle";
+                if (direction != null && direction.equals("left"))
+                    newAction = "idleLeft";
+            }
+        }
+        
         // setting fall animation, overrides other animations
         if (isFalling())
         {
@@ -172,6 +186,8 @@ public class MovablePlayerActor extends GravityActor
     {
         GameWorld w = (GameWorld) (getWorld());
         w.changeLives(-1 * dam);
+        
+        takingDamage = true;
     }
     
     /**
