@@ -91,7 +91,7 @@ public abstract class GameWorld extends World
      * Controls changing worlds
      */
     public void act() {
-        if (Mayflower.isKeyDown(Keyboard.KEY_ENTER))
+        if (Mayflower.isKeyDown(Keyboard.KEY_N))
         {
             if (getCurrentLevel().equals("Title Screen"))
             {
@@ -99,17 +99,9 @@ public abstract class GameWorld extends World
                 changeHasLost(false);
                 Mayflower.setWorld(new LevelOneWorld(0, 3));
             }
-            else if (getCurrentLevel().equals("Game Over")
-              || getCurrentLevel().equals("WIN"))
-            {
-                changeCurrentLevel("Title Screen");
-                //System.out.println("aa");
-                changeHasLost(false);
-                Mayflower.setWorld(new TitleWorld(0, 3));
-            }
         }
         
-        if (Mayflower.isKeyDown(Keyboard.KEY_SPACE))
+        if (Mayflower.isKeyDown(Keyboard.KEY_I))
         {
             if (getCurrentLevel().equals("Title Screen"))
             {
@@ -119,10 +111,22 @@ public abstract class GameWorld extends World
             }
         }
         
+        if (Mayflower.isKeyDown(Keyboard.KEY_ENTER))
+        {
+            if (getCurrentLevel().equals("Game Over")
+              || getCurrentLevel().equals("WIN"))
+            {
+                changeCurrentLevel("Title Screen");
+                //System.out.println("aa");
+                changeHasLost(false);
+                Mayflower.setWorld(new TitleWorld(0, 3));
+            }
+        }
+        
         /**
          * Changes the world to the game over world if the player lost
          */  
-        if(getHasLost() == true && !getCurrentLevel().equals("GameOver")) {
+        if(getHasLost() == true && !getCurrentLevel().equals("Game Over")) {
               //System.out.println("player lost, so loading");
               Mayflower.setWorld(new GameOverWorld(getScore(), getLives()));
         }
@@ -138,6 +142,9 @@ public abstract class GameWorld extends World
         updateLevelText();
     }
     
+    /**
+     * Changes world to next one.
+     */
     public void changeWorld()
     {
         if (getCurrentLevel().equals("Infinite"))
@@ -159,5 +166,29 @@ public abstract class GameWorld extends World
         }
     }
     
+    /**
+     * Gets boolean array to use whenever spawn 3 out of 5 coins
+     */
+    public boolean[] getCoinBoolArr()
+    {
+        boolean[] r = new boolean[] {true, true, true, false, false};
+        
+        for (int i = 0; i < r.length; i++)
+        {
+            int randI = (int) (r.length * Math.random());
+            
+            boolean temp = r[i];
+            r[i] = r[randI];
+            r[randI] = temp;
+        }
+        
+        return r;
+    }
+    
+    /**
+     * Defined in subclasses, 
+     * allows resetting worlds when
+     * jumped off of.
+     */
     public abstract void resetWorld();
 }

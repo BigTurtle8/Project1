@@ -14,13 +14,10 @@ public class MovablePlayerActor extends GravityActor
     private Animation walkRight, walkLeft;
     private Animation fallRight, fallLeft;
     private Animation jumpRight, jumpLeft;
-    private Animation hurtRight, hurtLeft;
-    private Animation deadRight, deadLeft;
     private Animation slideRight, slideLeft;
     
     private boolean doubleJumpAvail;
     private boolean canJump;
-    private boolean takingDamage;
     
     private String currentAction;
     private String direction;
@@ -76,14 +73,6 @@ public class MovablePlayerActor extends GravityActor
             newAction = "idle";
             if (direction != null && direction.equals("left"))
                 newAction = "idleLeft";
-                
-            // if damaged and anim not done, hurt
-            if (takingDamage)
-            {
-                newAction = "hurtRight";
-                if (direction != null && direction.equals("left"))
-                    newAction = "hurtLeft";
-            }
         }
         
         // ladder movement
@@ -102,41 +91,26 @@ public class MovablePlayerActor extends GravityActor
         } 
         else if (canJump && Mayflower.isKeyPressed(Keyboard.KEY_UP) && doubleJumpAvail) 
         {
-            setVelocity(-18);
+            setVelocity(-13);
             doubleJumpAvail = false;
         }
-        else if (getVelocity() < 0)
-        {
-            // if going up, then negative downward velocity
-            // so maintain jump anim
-            
-            newAction = "jumpRight";
-            if (direction != null && direction.equals("left"))
-                newAction = "jumpLeft";
-        }
         
-        // if currently taking damage,
-        // checks whether anim is done.
-        // if so, go back to idle
-        if (currentAction != null && (currentAction.equals("hurtRight") || currentAction.equals("hurtRight"))
-        {
-            OneTimeAnimation hurtAnim = (OneTimeAnimation) getAnimation();
-            if (hurtAnim.isFinished())
-            {
-                newAction = "idle";
-                if (direction != null && direction.equals("left"))
-                    newAction = "idleLeft";
-                    
-                takingDamage = false;
-            }
-        }
-        
-        // setting fall animation, overrides other animations
+        // setting fall / jump animation, overrides other animations
         if (isFalling())
         {
-            newAction = "fallRight";
-            if (direction != null && direction.equals("left"))
-                newAction = "fallLeft";
+            // if velocity is negative, then upward
+            if (getVelocity() < 0)
+            {
+                newAction = "jumpRight";
+                if (direction != null && direction.equals("left"))
+                    newAction = "jumpLeft";
+            }
+            else
+            {
+                newAction = "fallRight";
+                if (direction != null && direction.equals("left"))
+                    newAction = "fallLeft";
+            }
         } 
         else 
         {
@@ -151,12 +125,6 @@ public class MovablePlayerActor extends GravityActor
                 
             else if (newAction.equals("idleLeft"))
                 setAnimation(idleLeft);
-                
-            else if (newAction.equals("hurtRight"))
-                setAnimation(hurtRight);
-                
-            else if (newAction.equals("hurtLeft"))
-                setAnimation(hurtLeft);
                 
             else if (newAction.equals("walkRight"))
                 setAnimation(walkRight);
@@ -177,6 +145,7 @@ public class MovablePlayerActor extends GravityActor
                 setAnimation(jumpLeft);
                 
             currentAction = newAction;
+            // System.out.println(newAction);
         }
         
         // resets jump availability
@@ -205,8 +174,6 @@ public class MovablePlayerActor extends GravityActor
     {
         GameWorld w = (GameWorld) (getWorld());
         w.changeLives(-1 * dam);
-        
-        takingDamage = true;
     }
     
     /**
@@ -243,33 +210,6 @@ public class MovablePlayerActor extends GravityActor
     {    
         jumpRight = right;
         jumpLeft = left;
-    }
-    
-    /**
-     * Sets hurt animations to use.
-     */
-    public void setHurtAnimations(Animation right, Animation left) 
-    {    
-        hurtRight = right;
-        hurtLeft = left;
-    }
-    
-    /**
-     * Sets death animations to use.
-     */
-    public void setDeadAnimations(Animation right, Animation left) 
-    {    
-        deadRight = right;
-        deadLeft = left;
-    }
-    
-    /**
-     * Sets slide animations to use.
-     */
-    public void setSlideAnimations(Animation right, Animation left) 
-    {    
-        slideRight = right;
-        slideLeft = left;
     }
     
     /**

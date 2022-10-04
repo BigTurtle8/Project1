@@ -11,15 +11,16 @@ public class LevelOneWorld extends GameWorld
     private String[][] tiles;
     private MovableSetting setting;
     
+    /**
+      * Sets the screen with the number of lives, score, background
+      */
     public LevelOneWorld(int s, int l)
     {
-        /**
-         * Sets the screen with the number of lives, score, and level one background
-         */
+        
         super(s,l);
         
         System.out.println("Loading lvl1");
-        setBackground("img/BG/Untitled Drawing.png");
+        setBackground("img/BG/Background.png");
         tiles = new String[6][32];
         
         super.changeCurrentLevel("Level One");
@@ -55,6 +56,9 @@ public class LevelOneWorld extends GameWorld
         };
         
         tiles = tempTiles;
+        boolean[] coinBoolArr = getCoinBoolArr();
+        int coinCount = 0;
+        
         // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
         {
@@ -102,22 +106,32 @@ public class LevelOneWorld extends GameWorld
                 }
                 else if (tiles[r][c].equals("C"))
                 {
-                    // coin
-                    Coin co = new Coin();
-                    addObject(co, c * 100, r * 100);
-                    setting.add(co);
+                    // coin, check with bool arr
+                    // to "randomize" placement
+                    
+                    if (coinBoolArr[coinCount])
+                    {
+                        Coin co = new Coin();
+                        addObject(co, c * 100 + 25, r * 100 + 25);
+                        setting.add(co);
+                    }
+                    
+                    coinCount++;
                 }
                 else if (tiles[r][c].equals("H"))
                 {
                     // heart
                     Heart h = new Heart();
-                    addObject(h, c * 100, r * 100);
+                    addObject(h, c * 100 + 20, r * 100 + 20);
                     setting.add(h);
                 }
             }
         }
     }
     
+    /**
+     * Resets world.
+     */
     public void resetWorld()
     {
         Mayflower.setWorld(new LevelOneWorld(getScore(), getLives()));
