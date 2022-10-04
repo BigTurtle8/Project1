@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=OneTimeAnimation
+comment0.text=\r\n\ @Marcus\ A.\r\n\ \r\n\ A\ subclass\ of\ animation\ that\ only\r\n\ runs\ the\ animation\ a\ single\ time.\r\n
+comment1.params=framerate\ filenames
+comment1.target=OneTimeAnimation(int,\ java.lang.String[])
+comment1.text=\r\n\ Constructor\ simply\ calls\ Animation\r\n\ constructor\ with\ same\ arguments.\r\n
+comment2.params=
+comment2.target=mayflower.MayflowerImage\ getNextFrame()
+comment2.text=\r\n\ Overriding\ method\ from\ Animation\r\n\ to\ NOT\ loop\ through\ animations.\r\n
+comment3.params=
+comment3.target=boolean\ isFinished()
+comment3.text=\r\n\ Returns\ whether\ the\ animation\ has\ finished.\r\n
+numComments=4

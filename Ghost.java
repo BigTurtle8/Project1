@@ -7,15 +7,24 @@ import mayflower.*;
  */
 public class Ghost extends Consumable
 {
+    private MayflowerImage ghostLeft, ghostRight;
+    private boolean isRight;
+    
     /**
      * Constructor for objects of class spikes
      */
-    private boolean isRight = true;
     public Ghost()
     {
-        MayflowerImage ghost = new MayflowerImage("img/interactable/ghost.png");
-        ghost.scale(100,100);
-        setImage(ghost);
+        ghostLeft = new MayflowerImage("img/interactable/ghost.png");
+        ghostLeft.scale(100,100);
+        
+        ghostRight = new MayflowerImage("img/interactable/ghost.png");
+        ghostRight.scale(100, 100);
+        ghostRight.mirrorHorizontally();
+        
+        setImage(ghostLeft);
+        
+        isRight = true;
     }
 
     /**
@@ -26,6 +35,11 @@ public class Ghost extends Consumable
         {
             // switches boolean
             isRight = isRight ^ true;
+            if (isRight)
+                setImage(ghostRight);
+                
+            else
+                setImage(ghostLeft);
         }
         
         if (isRight)
@@ -37,10 +51,11 @@ public class Ghost extends Consumable
             setLocation(getX() - 1, getY());
         }
     }
+    
     /**
-    *Decreases the players lives by one if the player touches the spike
-    */
-    public void effect()
+     * Decreases the players lives by one if the player touches the spike
+     */
+    public void effect(MovablePlayerActor a)
     {
             
         //p.setLocation(350,0);
@@ -48,7 +63,9 @@ public class Ghost extends Consumable
         w.changeLives(-1);
     }
     
-    
+    /**
+     * Detects collision with block
+     */
     public boolean blocked() {
         return isTouching(Block.class);
     }

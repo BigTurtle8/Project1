@@ -14,8 +14,6 @@ public class MovablePlayerActor extends GravityActor
     private Animation walkRight, walkLeft;
     private Animation fallRight, fallLeft;
     private Animation jumpRight, jumpLeft;
-    private Animation hurtRight, hurtLeft;
-    private Animation deadRight, deadLeft;
     private Animation slideRight, slideLeft;
     
     private boolean doubleJumpAvail;
@@ -69,7 +67,6 @@ public class MovablePlayerActor extends GravityActor
             newAction = "walkLeft";
             direction = "left";
         }
-            
         else 
         {
             // if not moving, idle
@@ -86,23 +83,34 @@ public class MovablePlayerActor extends GravityActor
             setLocation(getX(), getY() - 4);
         }
         
-        // jump and double jump
+        // jump and double jump,
+        // also adding anim
         if (canJump && Mayflower.isKeyDown(Keyboard.KEY_UP) && !isFalling()) 
         {
             setVelocity(-18);
         } 
         else if (canJump && Mayflower.isKeyPressed(Keyboard.KEY_UP) && doubleJumpAvail) 
         {
-            setVelocity(-18);
+            setVelocity(-13);
             doubleJumpAvail = false;
         }
         
-        // setting fall animation, overrides other animations
+        // setting fall / jump animation, overrides other animations
         if (isFalling())
         {
-            newAction = "fallRight";
-            if (direction != null && direction.equals("left"))
-                newAction = "fallLeft";
+            // if velocity is negative, then upward
+            if (getVelocity() < 0)
+            {
+                newAction = "jumpRight";
+                if (direction != null && direction.equals("left"))
+                    newAction = "jumpLeft";
+            }
+            else
+            {
+                newAction = "fallRight";
+                if (direction != null && direction.equals("left"))
+                    newAction = "fallLeft";
+            }
         } 
         else 
         {
@@ -130,9 +138,18 @@ public class MovablePlayerActor extends GravityActor
             else if (newAction.equals("fallLeft"))
                 setAnimation(fallLeft);
                 
+            else if (newAction.equals("jumpRight"))
+                setAnimation(jumpRight);
+                
+            else if (newAction.equals("jumpLeft"))
+                setAnimation(jumpLeft);
+                
             currentAction = newAction;
+            // System.out.println(newAction);
         }
         
+        // resets jump availability
+        // so can be turned back off if on ladder
         setCanJump(true);
         
         // trigger effects of all touching interactables
@@ -193,33 +210,6 @@ public class MovablePlayerActor extends GravityActor
     {    
         jumpRight = right;
         jumpLeft = left;
-    }
-    
-    /**
-     * Sets hurt animations to use.
-     */
-    public void setHurtAnimations(Animation right, Animation left) 
-    {    
-        hurtRight = right;
-        hurtLeft = left;
-    }
-    
-    /**
-     * Sets death animations to use.
-     */
-    public void setDeadAnimations(Animation right, Animation left) 
-    {    
-        deadRight = right;
-        deadLeft = left;
-    }
-    
-    /**
-     * Sets slide animations to use.
-     */
-    public void setSlideAnimations(Animation right, Animation left) 
-    {    
-        slideRight = right;
-        slideLeft = left;
     }
     
     /**

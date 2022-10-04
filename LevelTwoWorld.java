@@ -11,13 +11,13 @@ public class LevelTwoWorld extends GameWorld
     private String[][] tiles;
     private MovableSetting setting;
     
+    /**
+      * Sets the screen with the number of lives, score, background
+      */
     public LevelTwoWorld(int s, int l)
     {
-        /**
-         * Sets the screen with the number of lives, score, and level two background
-         */
         super(s,l);
-        setBackground("img/BG/Untitled Drawing.png");
+        setBackground("img/BG/Background.png");
         super.changeCurrentLevel("Level Two");    
         
         tiles = new String[6][32];
@@ -25,6 +25,10 @@ public class LevelTwoWorld extends GameWorld
         buildWorld();
     }
     
+    /**
+     * Makes setting move and runs
+     * world-switching method in superclass.
+     */
     public void act()
     {
         super.act();
@@ -47,6 +51,9 @@ public class LevelTwoWorld extends GameWorld
         };
         
         tiles = tempTiles;
+        boolean[] coinBoolArr = getCoinBoolArr();
+        int coinCount = 0;
+        
         // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
         {
@@ -94,22 +101,32 @@ public class LevelTwoWorld extends GameWorld
                 }
                 else if (tiles[r][c].equals("C"))
                 {
-                    // coin
-                    Coin co = new Coin();
-                    addObject(co, c * 100, r * 100);
-                    setting.add(co);
+                    // coin, check with bool arr
+                    // to "randomize" placement
+                    
+                    if (coinBoolArr[coinCount])
+                    {
+                        Coin co = new Coin();
+                        addObject(co, c * 100 + 25, r * 100 + 25);
+                        setting.add(co);
+                    }
+                    
+                    coinCount++;
                 }
                 else if (tiles[r][c].equals("H"))
                 {
                     // heart
                     Heart h = new Heart();
-                    addObject(h, c * 100, r * 100);
+                    addObject(h, c * 100 + 20, r * 100 + 20);
                     setting.add(h);
                 }
             }
         }
     }
     
+    /**
+     * Resets world.
+     */
     public void resetWorld()
     {
         Mayflower.setWorld(new LevelTwoWorld(getScore(), getLives()));

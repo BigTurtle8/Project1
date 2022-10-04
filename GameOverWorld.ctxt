@@ -5,4 +5,5 @@ comment1.params=s\ l
 comment1.target=GameOverWorld(int,\ int)
 comment2.params=
 comment2.target=void\ resetWorld()
+comment2.text=\r\n\ Resets\ world.\r\n
 numComments=3

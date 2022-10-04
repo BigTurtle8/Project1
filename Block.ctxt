@@ -6,5 +6,5 @@ comment1.target=Block(java.lang.String)
 comment1.text=\r\n\ Constructor\ for\ class\ Block\r\n\ Takes\ a\ String\ argument\ to\ define\ what\r\n\ image\ it\ should\ use.\r\n
 comment2.params=
 comment2.target=boolean\ isBlocking()
-comment2.text=\r\n\ Defines\ abstact\ method\ from\r\n\ MovableSettingActor.\ Sets\ that\ players\ should\r\n\ \r\n
+comment2.text=\r\n\ Defines\ abstact\ method\ from\r\n\ MovableSettingActor.\ Sets\ that\ players\ should\r\n\ not\ be\ able\ to\ move\ through\ it.\r\n
 numComments=3

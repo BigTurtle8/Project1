@@ -12,15 +12,16 @@ public class InfiniteWorld extends GameWorld
     private String[][] tiles;
     private MovableSetting setting;
     
+    /**
+       * Sets the screen with the number of lives, score, and background
+       */
     public InfiniteWorld(int s, int l)
     {
-        /**
-         * Sets the screen with the number of lives, score, and level one background
-         */
+        
         super(s,l);
         
         System.out.println("Loading lvl1");
-        setBackground("img/BG/Untitled Drawing.png");
+        setBackground("img/BG/Background.png");
         tiles = new String[6][32];
         
         super.changeCurrentLevel("Infinite");
@@ -30,6 +31,10 @@ public class InfiniteWorld extends GameWorld
         buildRandomWorld();
     }
     
+    /**
+     * Makes setting move and runs
+     * world-switching method in superclass.
+     */
     public void act()
     {
         super.act();
@@ -141,6 +146,9 @@ public class InfiniteWorld extends GameWorld
         }
     }
     
+    /**
+     * Resets world.
+     */
     public void resetWorld()
     {
         Mayflower.setWorld(new InfiniteWorld(getScore(), getLives()));

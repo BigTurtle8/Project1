@@ -122,75 +122,11 @@ public class Player extends MovablePlayerActor
         jumpLeft.setBounds(33, 5, 54, 80);
         
         
-        
-        /**  HURT ANIMATIONS  *******************************************/
-        String[] hRFilenames = new String[10];
-        String[] hLFilenames = new String[10];
-        for (int i = 0; i < hRFilenames.length; i++) {
-            hRFilenames[i] = "img/cat/Hurt (" + (i + 1) + ").png";
-            hLFilenames[i] = "img/cat/Hurt (" + (i + 1) + ").png";
-        }
-        Animation hurtRight = new Animation(50, hRFilenames);
-        Animation hurtLeft = new Animation(50, hLFilenames);
-        
-        hurtRight.scale(100, 87);
-        hurtLeft.scale(100, 87);
-        
-        hurtLeft.mirrorHorizontally();
-        
-        hurtRight.setBounds(13, 5, 54, 80);
-        hurtLeft.setBounds(33, 5, 54, 80);
-        
-        
-        
-        /**  DEAD ANIMATIONS  *******************************************/
-        String[] dRFilenames = new String[10];
-        String[] dLFilenames = new String[10];
-        for (int i = 0; i < dRFilenames.length; i++) {
-            dRFilenames[i] = "img/cat/Dead (" + (i + 1) + ").png";
-            dLFilenames[i] = "img/cat/Dead (" + (i + 1) + ").png";
-        }
-        Animation deadRight = new Animation(50, dRFilenames);
-        Animation deadLeft = new Animation(50, dLFilenames);
-        
-        deadRight.scale(100, 87);
-        deadLeft.scale(100, 87);
-        
-        deadLeft.mirrorHorizontally();
-        
-        deadRight.setBounds(13, 5, 54, 80);
-        deadLeft.setBounds(33, 5, 54, 80);
-        
-        
-        
-        /**  SLIDE ANIMATIONS  ******************************************/
-        String[] sRFilenames = new String[10];
-        String[] sLFilenames = new String[10];
-        for (int i = 0; i < sRFilenames.length; i++) {
-            sRFilenames[i] = "img/cat/Slide (" + (i + 1) + ").png";
-            sLFilenames[i] = "img/cat/Slide (" + (i + 1) + ").png";
-        }
-        Animation slideRight = new Animation(50, sRFilenames);
-        Animation slideLeft = new Animation(50, sLFilenames);
-        
-        slideRight.scale(100, 87);
-        slideLeft.scale(100, 87);
-        
-        slideLeft.mirrorHorizontally();
-        
-        slideRight.setBounds(13, 5, 54, 80);
-        slideLeft.setBounds(33, 5, 54, 80);
-        
-        
-        
         /**  Sets every animation in MoveablePlayerActor */
         setWalkAnimations(walkRight, walkLeft);
         setIdleAnimations(idle, idleLeft);
         setFallAnimations(fallRight, fallLeft);
         setJumpAnimations(jumpRight, jumpLeft);
-        setHurtAnimations(hurtRight, hurtLeft);
-        setDeadAnimations(deadRight, deadLeft);
-        setSlideAnimations(slideRight, slideLeft);
     }
     
     /**

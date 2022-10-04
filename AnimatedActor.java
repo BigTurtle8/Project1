@@ -15,14 +15,6 @@ public class AnimatedActor extends Actor
     private Timer animationTimer;
     
     /**
-     * Constructor for objects of class AnimatedActor
-     */
-    public AnimatedActor()
-    {
-        
-    }
-    
-    /**
      * Set animation method
      * Creates a timer of value 1000
      * Timer is used to control player animations
@@ -33,6 +25,13 @@ public class AnimatedActor extends Actor
         animationTimer = new Timer(1000);
     }
     
+    /**
+     * Returns animation.
+     */
+    public Animation getAnimation()
+    {
+        return animation;
+    }
     
     /**
      * Checks if animation is not null

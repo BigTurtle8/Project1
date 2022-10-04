@@ -10,11 +10,11 @@ public class LevelThreeWorld extends GameWorld
     private String[][] tiles;
     private MovableSetting setting;
     
+    /**
+      * Sets the screen with the number of lives, score, background
+      */
     public LevelThreeWorld(int s, int l)
     {
-        /**
-         * Sets the screen with the number of lives, score, and level three background
-         */
         super(s,l);
         setBackground("img/BG/Background.png");
         super.changeCurrentLevel("Level Three");
@@ -24,6 +24,10 @@ public class LevelThreeWorld extends GameWorld
         buildWorld();
     }
     
+    /**
+     * Makes setting move and runs
+     * world-switching method in superclass.
+     */
     public void act()
     {
         super.act();
@@ -38,14 +42,17 @@ public class LevelThreeWorld extends GameWorld
         String[][] tempTiles = 
         {
             {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "C", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
-            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "L", "G", " ", " ", "N", " ", " ", "G", " ", " ", " ", " ", "G", "N", " ", " ", " ", " ", "G", " ", " ", " "},
-            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "L", "D", " ", "L", "G", "G", "G", "C", " ", " ", " ", "G", "D", " ", " ", " ", " ", " ", "D", " ", " ", " "},
-            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "G", "G", " ", " ", "D", "D", " ", "C", "T", "C", " ", "D", " ", " ", " "},
-            {" ", " ", " ", "P", "G", " ", " ", "C", "N", "G", " ", " ", " ", " ", " ", "T", " ", " ", "H", "G", " ", " ", " ", "G", "G", "G", "G", "G", " ", " ", " ", "F"},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "L", "G", " ", " ", "N", " ", " ", "G", " ", " ", " ", "L", "G", "N", " ", " ", " ", " ", "G", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "L", "D", " ", "L", "G", "G", "G", "C", " ", " ", " ", "L", "D", " ", " ", " ", " ", " ", "D", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "G", "G", " ", " ", " ", "D", "G", "C", "T", "C", "G", "D", " ", " ", " "},
+            {" ", " ", " ", "P", "G", " ", " ", "C", "N", "G", " ", " ", " ", " ", " ", "T", " ", " ", "H", "G", " ", " ", " ", "D", "G", "G", "G", "D", " ", " ", " ", "F"},
             {" ", " ", " ", "G", "D", "G", "G", "G", "G", "D", " ", " ", " ", " ", "G", "G", "G", "G", "G", "D", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "G", "G"}
         };
         
         tiles = tempTiles;
+        boolean[] coinBoolArr = getCoinBoolArr();
+        int coinCount = 0;
+        
         // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
         {
@@ -93,21 +100,28 @@ public class LevelThreeWorld extends GameWorld
                 }
                 else if (tiles[r][c].equals("C"))
                 {
-                    // coin
-                    Coin co = new Coin();
-                    addObject(co, c * 100, r * 100);
-                    setting.add(co);
+                    // coin, check with bool arr
+                    // to "randomize" placement
+                    
+                    if (coinBoolArr[coinCount])
+                    {
+                        Coin co = new Coin();
+                        addObject(co, c * 100 + 25, r * 100 + 25);
+                        setting.add(co);
+                    }
+                    
+                    coinCount++;
                 }
                 else if (tiles[r][c].equals("H"))
                 {
                     // heart
                     Heart h = new Heart();
-                    addObject(h, c * 100, r * 100);
+                    addObject(h, c * 100 + 20, r * 100 + 20);
                     setting.add(h);
                 }
                 else if (tiles[r][c].equals("N"))
                 {
-                    // heart
+                    // ghost
                     Ghost n = new Ghost();
                     addObject(n, c * 100, r * 100);
                     setting.add(n);
@@ -116,6 +130,9 @@ public class LevelThreeWorld extends GameWorld
         }
     }
     
+    /**
+     * Resets world.
+     */
     public void resetWorld()
     {
         Mayflower.setWorld(new LevelThreeWorld(getScore(), getLives()));
