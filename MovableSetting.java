@@ -39,7 +39,7 @@ public class MovableSetting
     
     /**
      * Even though MovableSetting is not a subclass of Actor,
-     * this is called every frame in the World classes
+     * this is called every frame in GameWorlds
      * 
      * Calls each MovableSettingActor to move (see 
      * MovableSettingActor class). If a blocking
