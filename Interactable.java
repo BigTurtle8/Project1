@@ -28,5 +28,10 @@ public abstract class Interactable extends MovableSettingActor
         return false;
     }
     
+    /**
+     * Abstract method to be overriden in subclasses;
+     * defines effect to be triggerred when colliding
+     * with MovablePlayerActor
+     */
     public abstract void doEffect(MovablePlayerActor a);
 }
