@@ -10,7 +10,6 @@ public class Trap extends Consumable
     /**
      * Constructor for objects of class Trap
      */
-    
     public Trap()
     {
         MayflowerImage trap = new MayflowerImage("img/interactable/trap.png");
@@ -23,7 +22,6 @@ public class Trap extends Consumable
      */
     public void effect(MovablePlayerActor a)
     {
-        //p.setLocation(350,0);
         a.takeDamage(1);
     }
 }
