@@ -22,7 +22,7 @@ public abstract class Interactable extends MovableSettingActor
      * Inherited abstract method from MoveableSettingActor
      * Returns a false value for if the item can block the player from moving
      * Interactables let the player pass through them
-    */
+     */
     public boolean isBlocking() 
     {
         return false;
