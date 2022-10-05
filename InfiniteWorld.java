@@ -31,8 +31,8 @@ public class InfiniteWorld extends GameWorld
     private String[][] chunk33;
     
     /**
-       * Sets the screen with the number of lives, score, and background
-       */
+     * Sets the screen with the number of lives, score, and background
+     */
     public InfiniteWorld(int s, int l)
     {
         
