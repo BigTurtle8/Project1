@@ -8,8 +8,8 @@ import mayflower.*;
 public class GameOverWorld extends GameWorld
 {
     /**
-      * Sets the screen with the number of lives, score, and losing background
-      */
+     * Sets the screen with the number of lives, score, and losing background
+     */
     public GameOverWorld(int s, int l) 
     {
         super(s,l);
