@@ -27,10 +27,14 @@ public abstract class GameWorld extends World
     public String getCurrentLevel() {
         return currentLevel;
     }
-
+    
+    /**
+     * Returns this gameWorld
+     */
     public GameWorld getGameWorld() {
         return this;
     }
+    
     /**
      * Changes the current level
      */
@@ -55,24 +59,28 @@ public abstract class GameWorld extends World
     public void changeScore(int amount) {
         score = score + amount;
     }
+    
     /**
      * Gets the current Score
      */
     public int getScore() {
         return score;
     }
+    
     /**
      * Gets the current number of lives
      */
     public int getLives() {
         return lives;
     }
+    
     /**
      * Changes the number of lives by a desired amount
      */
     public void changeLives(int amount){
         lives = lives + amount;
     }
+    
     /**
      * Updates the text on the screen to accurately display the score and number of lives
      */
