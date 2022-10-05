@@ -12,8 +12,8 @@ public class LevelOneWorld extends GameWorld
     private MovableSetting setting;
     
     /**
-      * Sets the screen with the number of lives, score, background
-      */
+     * Sets the screen with the number of lives, score, background
+     */
     public LevelOneWorld(int s, int l)
     {
         
