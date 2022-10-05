@@ -7,12 +7,12 @@ import mayflower.*;
  * Subclass to abstract MoveableSettingActor
  * Superclass to all interactable items
  * Makes sure interactables can be passed through and do not block player
-*/
+ */
 public abstract class Interactable extends MovableSettingActor
 {
     /**
      * Empty act method for Interactable class as not needed
-    */
+     */
     public void act() 
     {
         
