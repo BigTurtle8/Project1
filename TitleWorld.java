@@ -8,8 +8,8 @@ import mayflower.*;
 public class TitleWorld extends GameWorld
 {
     /**
-      * Sets the screen with the number of lives, score, introductory text, and title screen
-      */
+     * Sets the screen with the number of lives, score, introductory text, and title screen
+     */
     public TitleWorld(int s , int l)
     {
         super(s,l);
