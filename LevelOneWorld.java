@@ -5,7 +5,6 @@ import mayflower.*;
  * 
  * Creates the Level One World 
  */
-
 public class LevelOneWorld extends GameWorld
 {
     private String[][] tiles;
