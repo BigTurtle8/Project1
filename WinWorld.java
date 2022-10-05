@@ -5,7 +5,6 @@ import mayflower.*;
  * 
  * Creates the winning world 
  */
-
 public class WinWorld extends GameWorld
 {
     /**
