@@ -3,7 +3,7 @@ import mayflower.*;
 /**
  * @Andrew Wang
  *
- * Creates a spike that moves and interacts with the player
+ * Creates a ghost that moves and interacts with the player
  */
 public class Ghost extends Consumable
 {
@@ -11,7 +11,7 @@ public class Ghost extends Consumable
     private boolean isRight;
     
     /**
-     * Constructor for objects of class spikes
+     * Constructor for objects of class ghost
      */
     public Ghost()
     {
@@ -28,7 +28,7 @@ public class Ghost extends Consumable
     }
 
     /**
-     * Moves the spikes and changes directions when it is blocked
+     * Moves the ghost and changes directions when it is blocked
      */
     public void act() {
         if (blocked())
@@ -53,7 +53,7 @@ public class Ghost extends Consumable
     }
     
     /**
-     * Decreases the players lives by one if the player touches the spike
+     * Decreases the players lives by one if the player touches the ghost
      */
     public void effect(MovablePlayerActor a)
     {
