@@ -1,6 +1,5 @@
 import mayflower.*;
 
-// currently bugged
 /**
  * @Andrew Wang
  * 
