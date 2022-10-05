@@ -8,16 +8,16 @@ import mayflower.*;
 public class GameMayflower extends Mayflower
 {
     /**
-      * Constructor, creates the window for game.
-      */
+     * Constructor, creates the window for game.
+     */
     public GameMayflower()
     {
         super("Project 1", 800, 600);
     }
     
     /**
-      * Sets the screen to the title world.
-      */
+     * Sets the screen to the title world.
+     */
     public void init()
     {
         
