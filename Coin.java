@@ -10,7 +10,6 @@ public class Coin extends Consumable
     /**
      * Constructor for objects of class heart
      */
-    
     public Coin()
     {
         MayflowerImage coin = new MayflowerImage("img/interactable/coin.png");
@@ -20,7 +19,7 @@ public class Coin extends Consumable
 
     /**
      *Increases the players lives by one if the player touches the heart
-    */
+     */
     public void effect(MovablePlayerActor a)
     {
             
