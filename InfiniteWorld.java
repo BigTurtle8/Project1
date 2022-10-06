@@ -13,6 +13,7 @@ public class InfiniteWorld extends GameWorld
     private String[][] tiles;
     private String[][][] chunkList;
     private MovableSetting setting;
+    private int levelNum;
     
     // Location strings for 7 wide chunks
     private String[][] chunk71;
@@ -33,7 +34,7 @@ public class InfiniteWorld extends GameWorld
     /**
      * Sets the screen with the number of lives, score, and background
      */
-    public InfiniteWorld(int s, int l)
+    public InfiniteWorld(int s, int l, int levelNum)
     {
         
         super(s,l);
@@ -46,6 +47,7 @@ public class InfiniteWorld extends GameWorld
         super.changeCurrentLevel("Infinite");
         
         this.setting = new MovableSetting();
+        this.levelNum = levelNum;
         
         initializeAllChunks();
         selectChunks();
@@ -517,6 +519,15 @@ public class InfiniteWorld extends GameWorld
      */
     public void resetWorld()
     {
-        Mayflower.setWorld(new InfiniteWorld(getScore(), getLives()));
+        Mayflower.setWorld(new InfiniteWorld(getScore(), getLives(), levelNum));
+    }
+    
+    /**
+     * Overrides method in GameWorld
+     * so levelNum is passed through constructors.
+     */
+    public void changeWorld()
+    {
+        Mayflower.setWorld(new InfiniteWorld(getScore(), getLevel(), levelNum));
     }
 }
