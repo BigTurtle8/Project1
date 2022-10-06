@@ -8,6 +8,7 @@ import mayflower.*;
  * Creates timer to control player animations
  * When timer elapses, animations flip frames
  */
+
 public class AnimatedActor extends Actor
 {
     private Animation animation;

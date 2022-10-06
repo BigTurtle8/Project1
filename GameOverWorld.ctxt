@@ -3,6 +3,7 @@ comment0.target=GameOverWorld
 comment0.text=\r\n\ @Andrew\ Wang\r\n\ \r\n\ Creates\ the\ GameOver\ World\r\n
 comment1.params=s\ l
 comment1.target=GameOverWorld(int,\ int)
+comment1.text=\r\n\ Sets\ the\ screen\ with\ the\ number\ of\ lives,\ score,\ and\ losing\ background\r\n
 comment2.params=
 comment2.target=void\ resetWorld()
 comment2.text=\r\n\ Resets\ world.\r\n

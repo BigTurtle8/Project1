@@ -10,6 +10,7 @@ public class Heart extends Consumable
     /**
      * Constructor for objects of class heart
      */
+    
     public Heart()
     {
         MayflowerImage heart = new MayflowerImage("img/interactable/heart.png");
@@ -18,8 +19,8 @@ public class Heart extends Consumable
     }
 
     /**
-     * Increases the players lives by one if the player touches the heart
-     */
+     *Increases the players lives by one if the player touches the heart
+    */
     public void effect(MovablePlayerActor a)
     {
                     

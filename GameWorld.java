@@ -11,7 +11,6 @@ public abstract class GameWorld extends World
     private boolean hasLost;
     private int score;
     private int lives;
-    
     /**
      * Constructor for objects of class GameWorld
      * Sets the current level to title screen and sets the starting score and lives
@@ -28,66 +27,54 @@ public abstract class GameWorld extends World
     public String getCurrentLevel() {
         return currentLevel;
     }
-    
-    /**
-     * Returns this gameWorld
-     */
+
     public GameWorld getGameWorld() {
         return this;
     }
-    
     /**
      * Changes the current level
      */
     public void changeCurrentLevel(String a) {
         currentLevel = a;
     }
-    
     /**
      * Returns true if the player has won the game
      */
     public boolean getHasLost() {
         return hasLost;
     }
-    
     /**
      * Changes the status of the game to won or lost
      */
     public void changeHasLost(boolean a) {
         hasLost = a;
     }
-    
     /**
      * Changes the score by a desired amount
      */
     public void changeScore(int amount) {
         score = score + amount;
     }
-    
     /**
      * Gets the current Score
      */
     public int getScore() {
         return score;
     }
-    
     /**
      * Gets the current number of lives
      */
     public int getLives() {
         return lives;
     }
-    
     /**
      * Changes the number of lives by a desired amount
      */
     public void changeLives(int amount){
         lives = lives + amount;
     }
-    
     /**
-     * Updates the text on the screen to accurately display 
-     * the score and number of lives
+     * Updates the text on the screen to accurately display the score and number of lives
      */
     public void updateText() {
         showText(" Score: " + score + " Lives: " + lives, 10, 30, Color.BLACK);
@@ -120,7 +107,7 @@ public abstract class GameWorld extends World
             {
                 //System.out.println("aa");
                 changeHasLost(false);
-                Mayflower.setWorld(new InfiniteWorld(0, 3));
+                Mayflower.setWorld(new InfiniteWorld(0, 3, 1));
             }
         }
         
@@ -160,11 +147,7 @@ public abstract class GameWorld extends World
      */
     public void changeWorld()
     {
-        if (getCurrentLevel().equals("Infinite"))
-        {
-            Mayflower.setWorld(new InfiniteWorld(getScore(), getLives()));
-        } 
-        else if (getCurrentLevel().equals("Level One"))
+        if (getCurrentLevel().equals("Level One"))
         {
             Mayflower.setWorld(new LevelTwoWorld(getScore(), getLives()));
         }

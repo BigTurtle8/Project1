@@ -6,7 +6,7 @@ import mayflower.*;
  * Abstract class that extends interactable.
  * Automatically destroys iteself after 
  * doEffect() is called.
- */
+*/
 public abstract class Consumable extends Interactable
 {
     /**

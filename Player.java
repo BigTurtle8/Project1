@@ -18,6 +18,9 @@ public class Player extends MovablePlayerActor
           * Idle Animation
           * Fall Animation
           * Jump Animation
+          * Hurt Animation
+          * Dead Animation
+          * Slide Animation
      */
     public Player() 
     {

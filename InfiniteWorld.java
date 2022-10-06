@@ -34,7 +34,7 @@ public class InfiniteWorld extends GameWorld
     /**
      * Sets the screen with the number of lives, score, and background
      */
-    public InfiniteWorld(int s, int l, int levelNum)
+    public InfiniteWorld(int s, int l, int lvlNum)
     {
         
         super(s,l);
@@ -47,7 +47,9 @@ public class InfiniteWorld extends GameWorld
         super.changeCurrentLevel("Infinite");
         
         this.setting = new MovableSetting();
-        this.levelNum = levelNum;
+        this.levelNum = lvlNum;
+        
+        showText("Lvl " + levelNum ,30, 350, 30, Color.BLACK);
         
         initializeAllChunks();
         selectChunks();
@@ -523,11 +525,11 @@ public class InfiniteWorld extends GameWorld
     }
     
     /**
-     * Overrides method in GameWorld
-     * so levelNum is passed through constructors.
+     * Overrides superclass method
+     * so can pass levelNum
      */
     public void changeWorld()
     {
-        Mayflower.setWorld(new InfiniteWorld(getScore(), getLevel(), levelNum));
+        Mayflower.setWorld(new InfiniteWorld(getScore(), getLives(), levelNum + 1));
     }
 }

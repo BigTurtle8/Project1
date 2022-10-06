@@ -11,8 +11,8 @@ public class LevelThreeWorld extends GameWorld
     private MovableSetting setting;
     
     /**
-     * Sets the screen with the number of lives, score, background
-     */
+      * Sets the screen with the number of lives, score, background
+      */
     public LevelThreeWorld(int s, int l)
     {
         super(s,l);

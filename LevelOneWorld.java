@@ -5,14 +5,15 @@ import mayflower.*;
  * 
  * Creates the Level One World 
  */
+
 public class LevelOneWorld extends GameWorld
 {
     private String[][] tiles;
     private MovableSetting setting;
     
     /**
-     * Sets the screen with the number of lives, score, background
-     */
+      * Sets the screen with the number of lives, score, background
+      */
     public LevelOneWorld(int s, int l)
     {
         
