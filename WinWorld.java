@@ -20,7 +20,7 @@ public class WinWorld extends GameWorld
         super.changeCurrentLevel("WIN");
         showText("Your Score: " + super.getScore() + " Your lives: " + super.getLives(),100, 250, Color.BLACK);
         if(super.getLives() > 1) {
-        showText(super.getScore() + "*" + super.getLives(),100, 300, Color.BLACK);
+        showText(super.getScore() + " x " + super.getLives(),100, 300, Color.BLACK);
         showText("Final Score: " + super.getScore()*super.getLives(), 100, 350, Color.BLACK);
         showText("You won! Press enter to play again.",100, 400, Color.BLACK);
     }
