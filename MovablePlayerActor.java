@@ -79,8 +79,8 @@ public class MovablePlayerActor extends GravityActor
         if (isTouching(Ladder.class) && Mayflower.isKeyDown(Keyboard.KEY_UP)) 
         {
             setCanJump(false);
-            setVelocity(0);
-            setLocation(getX(), getY() - 4);
+            setVelocity(-4);
+            //setLocation(getX(), getY() - 4);
         }
         
         // jump and double jump,
