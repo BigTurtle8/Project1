@@ -31,8 +31,8 @@ public class InfiniteWorld extends GameWorld
     private String[][] chunk33;
     
     /**
-      * Sets the screen with the number of lives, score, and background
-      */
+     * Sets the screen with the number of lives, score, and background
+     */
     public InfiniteWorld(int s, int l)
     {
         
@@ -53,15 +53,18 @@ public class InfiniteWorld extends GameWorld
     }
     
     /**
-      * Makes setting move and runs
-      * world-switching method in superclass.
-      */
+     * Makes setting move and runs
+     * world-switching method in superclass.
+     */
     public void act()
     {
         super.act();
         setting.act();
     }
     
+    /**
+     * Initializes all the private chunk variables.
+     */
     public void initializeAllChunks()
     {
         chunk71 = buildChunk71();
@@ -78,6 +81,11 @@ public class InfiniteWorld extends GameWorld
         chunk33 = buildChunk33();
     }
     
+    /**
+     * Defines chunkList with randomly selected chunks,
+     * ordered by three 7-col chunks, and then two
+     * 2-col chunks.
+     */
     public void selectChunks()
     {
         // Generate Random Chunks for Chunks of 7 Length
@@ -93,7 +101,7 @@ public class InfiniteWorld extends GameWorld
         }
 
         // Generate Random Chunks for Chunks of 3 Length
-        int chunk3Count = 2;
+        int chunk3Count = 3;
         int r31 = (int)(Math.random() * chunk3Count) + 1;
         int r32 = (int)(Math.random() * chunk3Count) + 1;
         while (r31 == r32) {
@@ -135,6 +143,10 @@ public class InfiniteWorld extends GameWorld
         }
     }
     
+    /**
+     * Uses chunkList to build world
+     * with tiles, items, etc.
+     */
     public void buildWorld()
     {
         /**
@@ -148,124 +160,109 @@ public class InfiniteWorld extends GameWorld
             }
         }*/
         
-        for (int r = tiles.length - 1; r >= 0; r--)
+        // sets beginning, which is always same
+        tiles[4][3] = "P";
+        tiles[5][3] = "G";
+        
+        // records what col the chunk starts on
+        int startingCol = 4;
+        for (int chunkI = 0; chunkI < chunkList.length; chunkI++)
         {
-            for (int c = 0; c < tiles[0].length; c++)
+            for (int r = 0; r < tiles.length; r++)
             {
-                if (c <= 10) {
-                    tiles[r][c + 4] = chunkList[0][r][c];
-                }
-            }
-        }
-    }
-    
-    /**
-     * Sets world with blocks and player
-     * randomly. Will be moved to new class.
-     */
-    public void buildRandomWorld() {
-        for(int r = tiles.length - 1; r >= 0; r--) 
-        {
-            for(int c = 0; c < tiles[0].length; c++) 
-            {
-                if (r == 5) 
+                // loops through chunkList cols
+                for (int c = 0; c < chunkList[chunkI][0].length; c++)
                 {
-                    tiles[r][c] = "B";
-                }
-                else if (r == 4 && Math.random() > .7)
-                {
-                    tiles[r][c] = "B";
-                    if (Math.random() > 0.5) 
-                    {
-                        tiles[r][c] = "L";
-                    }
-                    if (Math.random() > 0.3) 
-                    {
-                        tiles[r][c] = "T";
-                    }
-                }
-                else if (r == 3 && tiles[r + 1][c].equals("Block") && 
-                    Math.random() > .7)
-                {
-                    tiles[r][c] = "Block";
-                }
-                else 
-                {
-                    tiles [r][c] = "";
+                    // copies chunk from chunkList into correct
+                    // spot in tiles, given the starting col and
+                    // the iteration of the col loop
+                    tiles[r][startingCol + c] = chunkList[chunkI][r][c];
                 }
             }
             
+            // after looping through a chunk,
+            // add the chunk's cols to startingCol
+            startingCol += chunkList[chunkI][0].length;
         }
         
-        //tiles[0][0] = "Player";
-        tiles[tiles.length - 2][tiles[0].length - 1] = "F";
-        
-        addObject(new Player(), 350, 0);
-        //addObject(new Trap(),400, 400);
+        // sets ending, which is always same
+        tiles[4][31] = "F";
+        tiles[5][31] = "G";
         
         // takes 2d array and puts it actually in world
         for (int r = 0; r < tiles.length; r++)
         {
             for (int c = 0; c < tiles[0].length; c++)
             {
-                if (tiles[r][c].equals("B"))
-                {
-                    Block b;
-                    if (r != 0 && tiles[r - 1][c].equals("B"))
-                        b = new Block("5");
-                      
-                    else 
-                        b = new Block("2");
-                        
-                    addObject(b, c * 100, r * 100);
-                    setting.add(b);
-                }
-                else if (tiles[r][c].equals("L"))
-                {
-                    // ladder
-                    Ladder l = new Ladder();
-                    addObject(l, c * 100, r * 100);
-                    setting.add(l);
-                }
-                else if (tiles[r][c].equals("P"))
-                {
-                    // player
-                    addObject(new Player(), c * 100, r * 100);
-                }
-                else if (tiles[r][c].equals("T"))
-                {
-                    // trap
-                    Trap l = new Trap();
-                    addObject(l, c * 100, r * 100);
-                    setting.add(l);
-                }
-                else if (tiles[r][c].equals("F"))
-                {
-                    // flag
-                    Flag f = new Flag();
-                    addObject(f, c * 100, r * 100);
-                    setting.add(f);
-                }
-                else if (tiles[r][c].equals("C"))
-                {
-                    // coin
-                    Coin co = new Coin();
-                    addObject(co, c * 100, r * 100);
-                    setting.add(co);
-                }
-                else if (tiles[r][c].equals("H"))
-                {
-                    // heart
-                    Heart h = new Heart();
-                    addObject(h, c * 100, r * 100);
-                    setting.add(h);
-                }
+                if (tiles[r][c] != null)
+                    if (tiles[r][c].equals("G"))
+                    {
+                        // grass
+                        Block b = new Block("2");
+                        addObject(b, c * 100, r * 100);
+                        setting.add(b);
+                    }
+                    else if (tiles[r][c].equals("D"))
+                    {
+                        // dirt
+                        Block b = new Block("5");
+                        addObject(b, c * 100, r * 100);
+                        setting.add(b);
+                    }
+                    else if (tiles[r][c].equals("L"))
+                    {
+                        // ladder
+                        Ladder l = new Ladder();
+                        addObject(l, c * 100, r * 100);
+                        setting.add(l);
+                    }
+                    else if (tiles[r][c].equals("P"))
+                    {
+                        // player
+                        addObject(new Player(), c * 100, r * 100);
+                    }
+                    else if (tiles[r][c].equals("T"))
+                    {
+                        // trap
+                        Trap l = new Trap();
+                        addObject(l, c * 100, r * 100);
+                        setting.add(l);
+                    }
+                    else if (tiles[r][c].equals("F"))
+                    {
+                        // flag
+                        Flag f = new Flag();
+                        addObject(f, c * 100, r * 100);
+                        setting.add(f);
+                    }
+                    else if (tiles[r][c].equals("C"))
+                    {
+                        // coin
+                        Coin co = new Coin();
+                        addObject(co, c * 100, r * 100);
+                        setting.add(co);
+                    }
+                    else if (tiles[r][c].equals("H"))
+                    {
+                        // heart
+                        Heart h = new Heart();
+                        addObject(h, c * 100, r * 100);
+                        setting.add(h);
+                    }
+                    else if (tiles[r][c].equals("N"))
+                    {
+                        // ghost
+                        Ghost n = new Ghost();
+                        addObject(n, c * 100, r * 100);
+                        setting.add(n);
+                    }
             }
         }
     }
     
-    
-    
+    /**
+     * Builds 7-col chunk 1.
+     */
     public String[][] buildChunk71() 
     {
         String[][] tiles = 
@@ -284,6 +281,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 2.
+     */
     public String[][] buildChunk72() 
     {
         String[][] tiles = 
@@ -302,6 +302,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 3.
+     */
     public String[][] buildChunk73() 
     {
         String[][] tiles = 
@@ -320,6 +323,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 4.
+     */
     public String[][] buildChunk74() 
     {
         String[][] tiles = 
@@ -329,7 +335,7 @@ public class InfiniteWorld extends GameWorld
             {" ", " ", "C", " ", " ", " ", " "},
             {" ", "G", "G", "G", " ", " ", " "},
             {" ", " ", " ", "D", "G", " ", " "},
-            {" ", " ", " ", " ", "D", "G", " "},
+            {" ", " ", " ", " ", " ", " ", " "},
             {" ", "T", " ", "L", "L", "L", " "},
             {"G", "G", "G", "H", " ", "G", "G"}
         
@@ -338,6 +344,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 5.
+     */
     public String[][] buildChunk75() 
     {
         String[][] tiles = 
@@ -356,6 +365,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 6.
+     */
     public String[][] buildChunk76() 
     {
         String[][] tiles = 
@@ -374,6 +386,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 7.
+     */
     public String[][] buildChunk77() 
     {
         String[][] tiles = 
@@ -392,6 +407,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 8.
+     */
     public String[][] buildChunk78() 
     {
         String[][] tiles = 
@@ -400,8 +418,8 @@ public class InfiniteWorld extends GameWorld
           //  0    1    2    3    4    5    6
             {" ", " ", " ", "T", " ", "C", " "},
             {"L", "G", " ", "G", " ", "G", "L"},
+            {"L", " ", " ", " ", " ", " ", "L"},
             {"L", "L", " ", " ", " ", "L", "L"},
-            {" ", "L", " ", " ", " ", "L", " "},
             {" ", " ", " ", " ", " ", " ", " "},
             {"G", " ", " ", "G", " ", " ", "G"}
         
@@ -410,6 +428,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 7-col chunk 9.
+     */
     public String[][] buildChunk79() 
     {
         String[][] tiles = 
@@ -428,6 +449,9 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 3-col chunk 1.
+     */
     public String[][] buildChunk31() 
     {
         String[][] tiles = 
@@ -446,36 +470,42 @@ public class InfiniteWorld extends GameWorld
         return tiles;
     }
     
+    /**
+     * Builds 3-col chunk 2.
+     */
     public String[][] buildChunk32() 
     {
         String[][] tiles = 
         {
             // Chunk 3.2: 
           //  0    1    2
-            {" ", " ", " "},
-            {" ", " ", " "},
-            {" ", "C", " "},
+            {" ", "H", " "},
             {" ", "G", " "},
-            {" ", "D", "T"},
-            {"G", "D", "G"}
+            {" ", " ", " "},
+            {" ", "G", " "},
+            {" ", "C", " "},
+            {"G", "G", "G"}
         
         };
         
         return tiles;
     }
     
+    /**
+     * Builds 3-col chunk 3.
+     */
     public String[][] buildChunk33() 
     {
         String[][] tiles = 
         {
             // Chunk 3.3: 
           //  0    1    2 
-            {" ", " ", "C"},
-            {" ", " ", "G"},
-            {" ", " ", "D"},
-            {" ", "G", "D"},
-            {" ", "D", "D"},
-            {"G", "D", "D"}
+            {"G", "G", "G"},
+            {" ", "C", " "},
+            {" ", " ", " "},
+            {" ", " ", " "},
+            {" ", "G", " "},
+            {"G", "D", "G"}
         
         };
         
